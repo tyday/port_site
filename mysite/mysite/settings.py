@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from mysite import secret_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,16 +22,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = '#bysmmosctn2*(*-q33s3d3i^cjg&#&9u2hr4d1^jnv69my5ye'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#bysmmosctn2*(*-q33s3d3i^cjg&#&9u2hr4d1^jnv69my5ye')
-print(SECRET_KEY)
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#bysmmosctn2*(*-q33s3d3i^cjg&#&9u2hr4d1^jnv69my5ye')
+SECRET_KEY = secret_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
-print(DEBUG)
+# DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = secret_settings.DEBUG
 
-ALLOWED_HOSTS = ['www.tylerday.net', '142.93.201.4',]
-
+if DEBUG:
+    ALLOWED_HOSTS = ['www.tylerday.net', '127.0.0.1',]
+else:
+    ALLOWED_HOSTS = ['www.tylerday.net', '142.93.201.4',]
 
 # Application definition
 
