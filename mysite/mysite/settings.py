@@ -29,7 +29,7 @@ print(SECRET_KEY)
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 print(DEBUG)
 
-ALLOWED_HOSTS = ['142.93.201.4',]
+ALLOWED_HOSTS = ['www.tylerday.net', '142.93.201.4',]
 
 
 # Application definition
