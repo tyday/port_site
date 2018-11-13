@@ -1,0 +1,22 @@
+{% load static %}
+<html>
+    <head>
+        <!-- <title>&#123&#123website.passable&#125&#125</title> -->
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
+        {% block head %}
+        {% endblock %} 
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="#">&ltPassable Website&gt</a></h1>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+        
+    
+    </body>
+</html>
