@@ -10,7 +10,7 @@ p{
     font-family: 'Merriweather', serif;
 }
 body{
-    padding-left: 1em;
+    /* padding-left: 1em; */
 }
 .page-header{
     background-color: #C25100;
