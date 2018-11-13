@@ -34,22 +34,6 @@ h1, h2, h3, h4 {
     font-family: 'Courier New', Courier, monospace;
 }
 
-<<<<<<< HEAD
-=======
-/* .save {
-    float: right;
-}
-.post-form textarea, .post-form input {
-    width: 100%;
-}
-
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
-    float: right;
-    font-size: 26pt;
-    margin-right: 20px;
-} */
->>>>>>> 3fae7de922cb13e3947efc91a4971c50fef8456c
 .post {
     margin-bottom: 70px;
 }
