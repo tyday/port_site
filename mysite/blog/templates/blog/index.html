@@ -11,5 +11,21 @@
         as well as some personal passion projects of my own. 
         Enjoy browsing, and get in touch with any questions.</p>
 </div></div>
-<div>{% lorem 3 p %}</div>
+<!-- Projects section -->
+<section class="project-section">
+    <h2 style="width:100%; text-align:center">This is the Project Section</h2>
+    <p style="width:100%; text-align:center">This is the default stuff</p>
+    {% include "blog/snippet_projects.html" %}
+    {% lorem 3 p %}
+</section>
+<!-- Blog Section -->
+<section>
+    {% block blog %}
+    <h2>Hi {{ user.get_full_name }}</h2>
+    {% include "blog/test_template.html" %}
+    <h2>Blog goes here</h2>
+    <p>This is default index.html text</p>
+    {% lorem 3 p %}
+    {% endblock blog %}
+</section>
 {% endblock %}
