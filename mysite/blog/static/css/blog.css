@@ -13,9 +13,12 @@ body{
     /* padding-left: 1em; */
 }
 .page-header{
-    background-color: #C25100;
+    background-color: white;
     margin-top: 0;
     padding: 1em 1em 1em 2em;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: stretch; */
 }
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
@@ -48,4 +51,28 @@ h1, h2, h3, h4 {
     border-width: 1px;
     border-style: solid;
     border-radius: 10px;
+    text-decoration: none;
+}
+.nav-btn{
+    display: inline-block;
+    text-decoration: none; 
+    color:#262626;
+    margin: 10px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 200;
+}
+ .nav-top{
+    display: flex;
+    justify-content: space-between;
+} 
+.nav-title{
+    display: flex;
+    justify-content: flex-start;
+}
+.nav-title a{
+    font-size: 22;
+}
+.nav-menu{
+    display: flex;
+    justify-content: flex-end;
 }

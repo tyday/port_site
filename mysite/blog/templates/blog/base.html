@@ -5,16 +5,23 @@
         <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Work+Sans:200,600" rel="stylesheet">
         {% block head %}
         <title>&#123&#123website.passable&#125&#125</title>
         {% endblock %} 
     </head>
     <body>
         <header class="page-header">
-            <h1><a href="/">&ltPassable Website&gt</a></h1>
-            <nav>
-                <a href="{% url 'post_new' %}">Add new post</a>
+            <!-- <h1><a href="/">&ltPassable Website&gt</a></h1> -->
+            <nav class="nav-top">
+                <div class="nav-title">
+                    <a href="/" class="nav-btn">Tyler Day</a>
+                </div>
+                <div class="nav-menu">
+                    <a href="/" class="nav-btn">Home</a>
+                    <a href="{% url 'post_list' %}" class="nav-btn">Blog</a>
+                </div>
             </nav>
         </header>
 

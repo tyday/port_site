@@ -4,6 +4,9 @@ from .models import Post
 from .forms import PostForm
 
 # Create your views here.
+def index(request):
+    return render(request, 'blog/index.html')
+    
 def post_list(request):
     posts = reversed(Post.objects.exclude(published_date__isnull=True).order_by('published_date'))
     return render(request, 'blog/post_list.html', {'posts': posts})
