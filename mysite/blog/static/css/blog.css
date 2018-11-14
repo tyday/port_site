@@ -15,22 +15,18 @@ body{
 .page-header{
     background-color: white;
     margin-top: 0;
-    padding: 1em 1em 1em 2em;
-    /* display: flex;
-    flex-direction: column; */
-    /* justify-content: stretch; */
-}
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
-    text-decoration: none;
+    padding: 1em .5em 1em .5em;
 }
 .content {
     margin-left: 40px;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Special Elite', cursive;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+}
+h1 {
+    font-size: 72px;
 }
 .date{
     color: #828282;
@@ -64,6 +60,7 @@ h1, h2, h3, h4 {
  .nav-top{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 } 
 .nav-title{
     display: flex;
@@ -75,4 +72,27 @@ h1, h2, h3, h4 {
 .nav-menu{
     display: flex;
     justify-content: flex-end;
+}
+.parallax {
+    /* The image used */
+    background-image: url("/static/images/AdobeStock_94764141_Preview.jpeg");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hero-text{
+    /* padding: 100px; */
+    padding-top: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.hero-text h1, .hero-text h2, .hero-text p{
+    color: white;
+    line-height: 1.4em;
 }
