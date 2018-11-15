@@ -31,7 +31,7 @@ SECRET_KEY = secret_settings.SECRET_KEY
 DEBUG = secret_settings.DEBUG
 
 if DEBUG:
-    ALLOWED_HOSTS = ['tylerday.net', '127.0.0.1',]
+    ALLOWED_HOSTS = ['tylerday.net', '127.0.0.1', '192.168.1.5',]
 else:
     ALLOWED_HOSTS = ['tylerday.net', '142.93.201.4', 'www.tylerday.net',]
 
