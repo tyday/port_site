@@ -18,11 +18,12 @@ def index(request):
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
+            message = f'Sender: {from_email}\nSubject:{subject}\n{message}'
             try:
-                send_mail(subject, message, from_email, ['tyrday@gmail.com'])
+                send_mail('tylerday.net: contact message', message, 'admin@tylerday.net', ['tyrday@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('success')
+            return redirect('index')
     return render(request, 'blog/index.html', {'posts': posts, 'form':form})
     
 def post_list(request):
