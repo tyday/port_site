@@ -1,13 +1,29 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import send_mail, BadHeaderError
 from .models import Post
 from .forms import PostForm
+from sendemail.forms import ContactForm
 
 # Create your views here.
 def index(request):
     # posts = reversed(Post.objects.exclude(published_date__isnull=True).order_by('published_date'))
-    posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
-    return render(request, 'blog/index.html', {'posts': posts})
+    if request.method == 'GET':
+        form = ContactForm()
+        posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['tyrday@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('success')
+    return render(request, 'blog/index.html', {'posts': posts, 'form':form})
     
 def post_list(request):
     posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')

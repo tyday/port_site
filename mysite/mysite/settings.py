@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'sendemail.apps.SendemailConfig',
+    # 'sendemail.apps.SendemailConfig',
+    'sendemail',
 ]
 
 MIDDLEWARE = [
