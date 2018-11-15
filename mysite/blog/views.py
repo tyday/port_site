@@ -5,11 +5,12 @@ from .forms import PostForm
 
 # Create your views here.
 def index(request):
-    posts = reversed(Post.objects.exclude(published_date__isnull=True).order_by('published_date'))
+    # posts = reversed(Post.objects.exclude(published_date__isnull=True).order_by('published_date'))
+    posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
     return render(request, 'blog/index.html', {'posts': posts})
     
 def post_list(request):
-    posts = reversed(Post.objects.exclude(published_date__isnull=True).order_by('published_date'))
+    posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
