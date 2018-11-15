@@ -86,6 +86,14 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.parallax-two {
+    background-image: url("/static/images/AdobeStock_206834948_Preview.jpeg");
+    min-height: 200px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .hero-text{
     /* padding: 100px; */
     padding-top: 100px;

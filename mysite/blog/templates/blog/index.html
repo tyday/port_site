@@ -11,19 +11,21 @@
         as well as some personal passion projects of my own. 
         Enjoy browsing, and get in touch with any questions.</p>
 </div></div>
-<!-- Projects section -->
 <div class="separator"></div>
+<!-- Projects section -->
 <section class="project-section">
     {% include "blog/snippet_projects.html" %}
 </section>
+<div class="separator"></div>
+<div class="parallax-two"></div>
+<!-- contact me -->
 <!-- Blog Section -->
 <section>
-    {% block blog %}
-    <h2>Hi {{ user.get_full_name }}</h2>
-    {% include "blog/test_template.html" %}
     <h2>Blog goes here</h2>
     <p>This is default index.html text</p>
+    {% for post in posts %}
+    <p>{{ post }}</p>
+    {% endfor %}
     {% lorem 3 p %}
-    {% endblock blog %}
 </section>
 {% endblock %}
