@@ -1,10 +1,10 @@
 <!-- sendemail/templates/email.html -->
-<h1>Contact Us</h1>
-<form method="post">
+<h2>Get in touch</h2>
+<form method="post" class="contactform">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="form-actions">
-      <button type="submit">Send</button>
-      <button type="reset">Clear</button>
+      <button type="submit" class="btn">Send</button>
+      <button type="reset" class="btn">Clear</button>
     </div>
 </form>
