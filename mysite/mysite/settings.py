@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'sendemail.apps.SendemailConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # May delete STATIC_ROOT don't know if it's needed
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Email handler
+# https://wsvincent.com/django-contact-form/
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
