@@ -38,12 +38,14 @@ h1 {
 } 
 .btn {
     display: inline-block;
-    background-color: lightblue;
+    background-color: transparent;
     padding: 10px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 10px;
+    /* border-width: 1px;
+    border-style: solid; */
+    /* border-radius: 10px; */
     text-decoration: none;
+    border:none;
+    cursor: pointer;
 }
 .nav-btn{
     display: inline-block;
@@ -174,6 +176,10 @@ h1 {
 }
 .contactform h2{
     font-weight: 200;
+}
+.form-actions{
+    display: flex;
+    justify-content: space-around;
 }
 footer p{
     text-align: center;
