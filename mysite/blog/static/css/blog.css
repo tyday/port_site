@@ -175,3 +175,17 @@ h1 {
 .contactform h2{
     font-weight: 200;
 }
+footer p{
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+}
+.social{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.social-icons{
+    width: 20px;
+    padding: 20px;
+}
