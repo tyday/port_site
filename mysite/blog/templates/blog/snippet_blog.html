@@ -1,9 +1,14 @@
 {% for post in posts %}
     <div class="post">
+        {% if post.photo %}
+        <img src="/static/images/{{ post.photo }}" alt="" class="post-image">
+        {% endif %}
+        <div class="post-contents">
         <div class="date">
-            published: {{ post.published_date }}
+            published: {{ post.published_date|date:"n/j/y g:h a" }}
         </div>
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr|truncatewords_html:15 }}</p>
+        <p>{{ post.text|linebreaksbr|truncatewords_html:20 }}</p>
+        </div>
     </div>
 {% endfor %}

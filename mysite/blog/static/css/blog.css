@@ -31,11 +31,27 @@ h1 {
 
 .post {
     margin-bottom: 70px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
 } 
+.post-image{
+    width: 320px;
+    height: auto;
+    object-fit: cover;
+}
+.post-contents{
+    width: 320px;
+}
+.post-contents *{
+    margin: 1em .7em 1em 1em;
+}
 .btn {
     display: inline-block;
     background-color: transparent;
