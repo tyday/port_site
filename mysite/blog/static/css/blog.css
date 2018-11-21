@@ -27,16 +27,19 @@ h1, h2, h3, h4 {
 h1 {
     font-size: 72px;
 }
-.date{
-    color: hsla(205, 11%, 60%,1);
-    font-family: "Raleway",serif;
-    font-size: .8em;
-}
 
 .post {
     margin-bottom: 70px;
     display: flex;
     /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.post-detail{
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -53,9 +56,15 @@ h1 {
 }
 .post-contents{
     width: 320px;
+    color: black;
 }
 .post-contents > *{
     margin: 1rem .7rem 1rem 1rem;
+}
+.date{
+    color: hsla(205, 11%, 60%,1);
+    font-family: "Raleway",serif;
+    font-size: .8em;
 }
 .btn {
     display: inline-block;
