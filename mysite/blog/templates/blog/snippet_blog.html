@@ -1,8 +1,11 @@
 {% for post in posts %}
     <div class="post">
         {% if post.photo %}
-        <img src="/static/images/{{ post.photo }}" alt="" class="post-image">
-        {% endif %}
+            <img src="/static/images/{{ post.photo }}" alt="" class="post-image">
+            {% else %}
+            <!-- adds generic photo to blog listing -->
+            <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="" class="post-image">
+            {% endif %}
         <a href="{% url 'post_detail' pk=post.pk %}">
         <div class="post-contents">
         <div class="date">
