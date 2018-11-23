@@ -30,11 +30,14 @@ h1 {
 
 .post {
     margin-bottom: 70px;
+}
+.post-link{
     display: flex;
     /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
 }
 .post-detail{
     margin-bottom: 70px;
