@@ -19,8 +19,10 @@ def index(request):
             from_name = form.cleaned_data['from_name']
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
-            message = f'Name: {from_name}\r\nSender: {from_email}\nSubject:{subject}\n{message}'
-            print(message)
+            message = f"""Name: {from_name}
+                        Sender: {from_email}
+                        Subject:{subject}
+                        {message}"""
             try:
                 send_mail('tylerday.net: contact message', message, 'admin@tylerday.net', ['tyrday@gmail.com'])
             except BadHeaderError:
