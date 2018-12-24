@@ -2,7 +2,7 @@
     <div class="post">
         <a href="{% url 'post_detail' pk=post.pk %}" class="post-link">
         {% if post.photo %}
-            <img src="/static/images/{{ post.photo }}" alt="" class="post-image">
+            <img src="{{ MEDIA_URL }}{{ post.photo }}" alt="{{ post.photo_alt_text }}" class="post-image">
             {% else %}
             <!-- adds generic photo to blog listing -->
             <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="" class="post-image">

@@ -72,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -128,16 +129,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# May delete STATIC_ROOT don't know if it's needed
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
 # Email handler
 # https://wsvincent.com/django-contact-form/
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-EMAIL_HOST = secret_settings.EMAIL_HOST
-# EMAIL_HOST_USER is api key
-EMAIL_HOST_USER = secret_settings.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = secret_settings.EMAIL_HOST_PASSWORD
-EMAIL_PORT = secret_settings.EMAIL_PORT
-EMAIL_USE_TLS = secret_settings.EMAIL_USE_TLS
+if DEBUG == True:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_HOST = secret_settings.EMAIL_HOST
+    # EMAIL_HOST_USER is api key
+    EMAIL_HOST_USER = secret_settings.EMAIL_HOST_USER
+    EMAIL_HOST_PASSWORD = secret_settings.EMAIL_HOST_PASSWORD
+    EMAIL_PORT = secret_settings.EMAIL_PORT
+    EMAIL_USE_TLS = secret_settings.EMAIL_USE_TLS
