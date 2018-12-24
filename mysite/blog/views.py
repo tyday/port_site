@@ -12,6 +12,8 @@ def index(request):
     if request.method == 'GET':
         form = ContactForm()
         posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
+        projects = Project.objects.all()
+        print(posts,projects)
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -28,7 +30,7 @@ def index(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('index')
-    return render(request, 'blog/index.html', {'posts': posts, 'form':form})
+    return render(request, 'blog/index.html', {'posts': posts, 'projects':projects, 'form':form})
     
 def post_list(request):
     posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')
