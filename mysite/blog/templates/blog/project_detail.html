@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="project-detail">
+        {% if project.images %}
+        <img src="{{ MEDIA_URL }}{{ project.images.first.image_file }}" alt="{{ project.images.first.alt_text }}" class="project-image">
+        {% endif %}
+        {% for image in project.images.all %}
+            <p>1.{{ image.name }}</p>
+            <p>2.{{ image.image_file }}</p>
+            <p>3.{{ image.alt_text }}</p>
+        {% endfor %}
+        <div class="project-contents">
+        <button type="button"></button>
+        <h2>{{ project.name }}</h2>
+        <p>Short Description</p>
+        <p>{{ project.short_description|linebreaksbr }}</p>
+        <p>More meaty description</p>
+        <p>{{ project.description|linebreaksbr }}</p>
+        </div>
+    </div>
+    {% endblock %}

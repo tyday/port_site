@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail, BadHeaderError
-from .models import Post
+from .models import Post, Project
 from .forms import PostForm
 from sendemail.forms import ContactForm
 
@@ -64,3 +64,10 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form':form})
+def project_list(request):
+    project = Project.objects.all()
+    return render(request, 'blog/project_list.html', {'project': project})
+
+def project_detail(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    return render(request, 'blog/project_detail.html', {'project':project})
