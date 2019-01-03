@@ -150,7 +150,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    box-shadow: 3px 3px 10px 3px hsla(205, 71%, 17%,0.08)
+    box-shadow: 3px 3px 10px 3px hsla(205, 71%, 17%,0.08);
+    color:#262626;
 }
 .project-title{
     /* margin: 0 auto; */
