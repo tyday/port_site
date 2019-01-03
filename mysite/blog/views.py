@@ -12,7 +12,7 @@ def index(request):
     if request.method == 'GET':
         form = ContactForm()
         posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
-        projects = Project.objects.all()
+        projects = Project.objects.filter(display=True).order_by('-importance')
         print(posts,projects)
     else:
         form = ContactForm(request.POST)
