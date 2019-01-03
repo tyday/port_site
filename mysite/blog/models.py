@@ -44,6 +44,13 @@ class Project(models.Model):
     short_description = models.TextField()
     description = models.TextField()
     images = models.ManyToManyField(Image)
+
+    # Importance is rank to determine order. Higher importance items go first
+    # display is a boolean to determine whether to display or not
+    importance = models.IntegerField()
+    display = models.BooleanField()
+    date_added = models.DateTimeField(default=timezone.now)
+    date_last_modified = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.name
