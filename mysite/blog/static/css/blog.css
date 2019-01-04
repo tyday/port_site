@@ -10,6 +10,7 @@ body{
 }
 a, a:visited{
     text-decoration: none;
+    font-family: 'Raleway', serif;
 }
 .page-header{
     background-color: white;
@@ -176,6 +177,49 @@ h1 {
 }
 .project-description{
     padding: 10px;
+}
+@ media only screen and (max-width:500px){
+
+}
+.project-detail{
+    padding: 10px 40px 40px 40px;
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: 75px 165px auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-areas:
+        "image title"
+        "image short-description"
+        "link link"
+        "long-description long-description"
+}
+.project-image-detail{
+    grid-area: image;
+}
+.project-name{
+    grid-area: title;
+}
+.project-description-short{
+    grid-area: short-description;
+}
+.project-description-long{
+    grid-area: long-description;
+}
+.project-link{
+    grid-area: link;
+    /* padding-bottom: 10px; */
+}
+@media only screen and (max-width:500px){
+    .project-detail{        
+        grid-template-rows: 250px 2fr 2fr auto;
+        grid-template-areas:
+            "image image"
+            "title title"
+            "short-description short-description"
+            "link link"
+            "long-description long-description"
+    }
 }
 .contact{
     display: flex;
