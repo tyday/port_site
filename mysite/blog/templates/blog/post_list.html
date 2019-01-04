@@ -3,23 +3,5 @@
 <title>&#123&#123blog.name&#125&#125</title>
 {% endblock %}
 {% block content %}
-    {% for post in posts %}
-    <div class="post">
-            <a href="{% url 'post_detail' pk=post.pk %}" class="post-link">
-            {% if post.photo %}
-            <img src="{{ MEDIA_URL }}{{ post.photo.image_file }}" alt="{{ post.photo.alt_text }}" class="post-image">
-            {% else %}
-            <!-- adds generic photo to blog listing -->
-            <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="" class="post-image">
-            {% endif %}
-            <div class="post-contents">
-            <div class="date">
-                published: {{ post.published_date|date:"n/j/y g:h a" }}
-            </div>
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            </div>
-            </a>
-        </div>
-    {% endfor %}
+    {% include "blog/full_blog.html" with posts=posts %}}
 {% endblock %}

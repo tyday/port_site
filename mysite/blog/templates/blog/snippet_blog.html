@@ -1,3 +1,7 @@
+{% comment %}
+<!-- Used on the front page. Limits post to 20 words -->
+{% endcomment %}
+
 {% for post in posts %}
     <div class="post">
         <a href="{% url 'post_detail' pk=post.pk %}" class="post-link">

@@ -18,5 +18,11 @@
         <p>More meaty description</p>
         <p>{{ project.description|linebreaksbr }}</p>
         </div>
+             
+        {% if project.post.all %}
+            <p>Found post</p>
+            {% include "blog/full_blog.html" with posts=project.post.all %}
+        {% endif %}
+
     </div>
     {% endblock %}
