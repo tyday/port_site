@@ -58,7 +58,8 @@ h1 {
     object-fit: cover;
 }
 .post-contents{
-    width: 320px;
+    min-width: 320px;
+    width: 50%;
     color: black;
 }
 .post-contents > *{
