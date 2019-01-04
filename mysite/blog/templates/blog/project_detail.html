@@ -3,26 +3,19 @@
 {% block content %}
     <div class="project-detail">
         {% if project.images %}
-        <img src="{{ MEDIA_URL }}{{ project.images.first.image_file }}" alt="{{ project.images.first.alt_text }}" class="project-image">
+        <img src="{{ MEDIA_URL }}{{ project.images.first.image_file }}" alt="{{ project.images.first.alt_text }}" class="project-image project-image-detail">
         {% endif %}
-        {% for image in project.images.all %}
-            <p>1.{{ image.name }}</p>
-            <p>2.{{ image.image_file }}</p>
-            <p>3.{{ image.alt_text }}</p>
-        {% endfor %}
-        <div class="project-contents">
-        <button type="button"></button>
-        <h2>{{ project.name }}</h2>
-        <p>Short Description</p>
-        <p>{{ project.short_description|linebreaksbr }}</p>
-        <p>More meaty description</p>
-        <p>{{ project.description|linebreaksbr }}</p>
-        </div>
-             
+        <!-- <div class="project-contents"> -->
+        <h2 class="project-name">{{ project.name }}</h2>
+        <p class="project-description-short">{{ project.short_description|linebreaksbr }}</p>
+        <p class="project-description-long">{{ project.description|linebreaksbr }}</p>
+        <!-- </div> -->
+        <a href="{{ project.githublink }}" class="project-link">{{ project.githublink }}</a>
+    </div>
+
         {% if project.post.all %}
-            <p>Found post</p>
             {% include "blog/full_blog.html" with posts=project.post.all %}
         {% endif %}
 
-    </div>
+    <!-- </div> -->
     {% endblock %}
