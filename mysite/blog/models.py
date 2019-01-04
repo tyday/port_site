@@ -6,22 +6,6 @@ from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
 
-class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
-    photo = models.ImageField(null=True,blank=True)
-    photo_alt_text = models.CharField(max_length=200, blank=True,null=True)
-
-    def publish(self):
-        self.puplished_date = timezone.now()
-        self.save()
-    
-    def __str__(self):
-        return self.title
-
 class Image(models.Model):
     name = models.CharField(max_length=100)
     image_file = models.ImageField(null=True,blank=True)
@@ -37,6 +21,25 @@ class Image(models.Model):
 
     def __str__(self):
         return self.name
+
+class Post(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    # photo = models.ImageField(null=True,blank=True)
+    # photo_alt_text = models.CharField(max_length=200, blank=True,null=True)
+
+    # photo = models.ManyToManyField(Image)
+    photo  = models.ForeignKey(Image, on_delete=models.CASCADE, blank=True, null=True)
+    def publish(self):
+        self.puplished_date = timezone.now()
+        self.save()
+    
+    def __str__(self):
+        return self.title
+
     
 class Project(models.Model):
     name = models.CharField(max_length=200)
@@ -45,6 +48,7 @@ class Project(models.Model):
     description = models.TextField()
     images = models.ManyToManyField(Image)
     githublink = models.CharField(max_length=200, blank=True, null=True)
+    post = models.ManyToManyField(Post)
 
     # Importance is rank to determine order. Higher importance items go first
     # display is a boolean to determine whether to display or not
