@@ -48,7 +48,7 @@ class Project(models.Model):
     description = models.TextField()
     images = models.ManyToManyField(Image)
     githublink = models.CharField(max_length=200, blank=True, null=True)
-    post = models.ManyToManyField(Post)
+    post = models.ManyToManyField(Post, blank=True)
 
     # Importance is rank to determine order. Higher importance items go first
     # display is a boolean to determine whether to display or not
