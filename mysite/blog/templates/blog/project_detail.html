@@ -10,7 +10,11 @@
         <p class="project-description-short">{{ project.short_description|linebreaksbr }}</p>
         <p class="project-description-long">{{ project.description|linebreaksbr }}</p>
         <!-- </div> -->
+        {% if project.githublink %}
         <a href="{{ project.githublink }}" class="project-link">{{ project.githublink }}</a>
+        {% else %}
+        <div class="project-link"></div>
+        {% endif %}
     </div>
 
         {% if project.post.all %}
