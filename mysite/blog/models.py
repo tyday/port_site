@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
 
 # Create your models here.
 
@@ -36,6 +37,8 @@ class Post(models.Model):
     def publish(self):
         self.puplished_date = timezone.now()
         self.save()
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
     
     def __str__(self):
         return self.title
@@ -56,6 +59,9 @@ class Project(models.Model):
     display = models.BooleanField()
     date_added = models.DateTimeField(default=timezone.now)
     date_last_modified = models.DateTimeField(default=timezone.now)
+
+    def get_absolute_url(self):
+        return reverse('project_detail', args=[str(self.id)])
     
     def __str__(self):
         return self.name
