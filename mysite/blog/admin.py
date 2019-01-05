@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Post, Project, Image
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name','importance','display')
+    list_editable = ('importance','display')
+    pass
+
 admin.site.register(Post)
-admin.site.register(Project)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Image)
