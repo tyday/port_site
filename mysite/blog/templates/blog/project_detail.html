@@ -11,10 +11,25 @@
         <p class="project-description-long">{{ project.description|linebreaksbr }}</p>
         <!-- </div> -->
         {% if project.githublink %}
-        <a href="{{ project.githublink }}" class="project-link">{{ project.githublink }}</a>
+        <div class="project-github-link">
+        <h3>Github</h3>
+        <a href="{{ project.githublink }}">{{ project.githublink }}</a>
+        </div>
+        {% else %}
+        <div class="project-github-link"></div>
+        {% endif %}
+
+        {% if project.weblink.all %}
+            <div class="project-link">
+            <h3>Links</h3>
+            {% for link in project.weblink.all %}
+                <a href="{{ link.link }}" class="project-github-link">{{ link.name }}</a></br>
+            {% endfor %}
+            </div>
         {% else %}
         <div class="project-link"></div>
         {% endif %}
+        
     </div>
 
         {% if project.post.all %}
