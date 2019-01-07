@@ -7,6 +7,10 @@ from django.urls import reverse
 
 # Create your models here.
 
+class WebLink(models.Model):
+    name = models.TextField()
+    link = models.TextField()
+
 class Image(models.Model):
     name = models.CharField(max_length=100)
     image_file = models.ImageField(null=True,blank=True)
@@ -52,6 +56,7 @@ class Project(models.Model):
     images = models.ManyToManyField(Image)
     githublink = models.CharField(max_length=200, blank=True, null=True)
     post = models.ManyToManyField(Post, blank=True)
+    weblink = models.ManyToManyField(WebLink, blank=True)
 
     # Importance is rank to determine order. Higher importance items go first
     # display is a boolean to determine whether to display or not
