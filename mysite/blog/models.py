@@ -11,6 +11,9 @@ class WebLink(models.Model):
     name = models.TextField()
     link = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 class Image(models.Model):
     name = models.CharField(max_length=100)
     image_file = models.ImageField(null=True,blank=True)
