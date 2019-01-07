@@ -207,6 +207,7 @@ h1 {
 }
 .project-description-long{
     grid-area: long-description;
+    margin-top: 10px;
 }
 .project-github-link{
     grid-area: github-link;
