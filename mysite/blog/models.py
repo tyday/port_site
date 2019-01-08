@@ -71,5 +71,10 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('project_detail', args=[str(self.id)])
     
+    def save(self, *args, **kwargs):
+        self.date_last_modified = timezone.now()
+        # self.save()
+        super().save(*args, **kwargs)  # Call the "real" save() method.
+    
     def __str__(self):
         return self.name
