@@ -3,6 +3,20 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
+class Cloud_coverage_choices(models.Model):
+    cloud_coverage_short = models.CharField(max_length=255)
+    cloud_coverage_long = models.CharField(max_length=255)
+    def __str__(self):
+        return self.cloud_coverage_long
+        
+class Precipitation_choices(models.Model):
+    precipitation_type = models.CharField(max_length=255)
+    def __str__(self):
+        return self.precipitation_type
+class Phenomena_choice(models.Model):
+    phenomena = models.CharField(max_length=255)
+    def __str__(self):
+        return self.phenomena
 
 class Observation(models.Model):
     observer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -20,33 +34,11 @@ class Observation(models.Model):
     aloft_wind_speed = models.IntegerField(blank=True, null=True)
 
     cloud_observation = models.CharField(max_length=255)
-    CLOUD_COVERAGE_CHOICES = (('Full coverage', 'Full coverage, little or no sky'), 
-                            ('Heavy coverage','Heavy coverage, small patches of sky'),
-                            ('Medium coverage','Medium coverage, about half clouds and half sky'),
-                            ('Light coverage', 'Light coverage, very few clouds'),
-                            ('None','No clouds')                            
-                            )
-    cloud_coverage = models.CharField(max_length=255, choices=CLOUD_COVERAGE_CHOICES, default='None')
-
-    PRECIPITATION_CHOICES = (
-                            ('No precipitation', 'No precipitation'),
-                            ('Drizzle', 'Drizzle'),
-                            ('Rain','Rain'),
-                            ('Hail','Hail'),
-                            ('Snow','Snow'),
-                            ('Sleet/freezing rain', 'Sleet/freezing rain'),
-                            ('Other','Other')
-    )
-    precipitation_observation = models.CharField(max_length=255, choices=PRECIPITATION_CHOICES, default='No precipitation')
-    PHENOM_CHOICES =(
-                    ('Nothing','Nothing'),
-                    ('Fog/Mist','Fog/Mist'),
-                    ('Dew','Dew'),
-                    ('Frost','Frost'),
-                    ('Rainbow','Rainbow')
-    )
-    phenomena_observation = models.CharField(max_length=255, choices=PHENOM_CHOICES, default='Nothing')
+    cloud_coverage = models.ForeignKey(Cloud_coverage_choices,on_delete=models.CASCADE, blank=True,null=True)
+    
+    precipitation_observation = models.ForeignKey(Precipitation_choices,on_delete=models.CASCADE, blank=True, null=True)
+    phenomena_observation = models.ForeignKey(Phenomena_choice,on_delete=models.CASCADE,blank=True, null=True)
 
     def __str__(self):
-        return self.observation_date
+        return str(self.observation_date)
 
