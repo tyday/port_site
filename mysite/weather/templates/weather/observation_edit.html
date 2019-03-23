@@ -1,0 +1,14 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+<h2>New Observation</h2>
+<form class="weather-observation-form" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+        <button type="reset">Clear</button>
+        <button type="submit">Save</button>
+</form>
+
+{% endblock %}
