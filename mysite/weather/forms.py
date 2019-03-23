@@ -21,4 +21,11 @@ class ObservationForm(forms.ModelForm):
                 'cloud_coverage',
                 'precipitation_observation',
                 'phenomena_observation',
+                'notes',
                 )
+    # def clean_notes(self):
+    #     notes = self.cleaned_data['notes']
+    #     num_words = len(notes.split())
+    #     if num_words < 4:
+    #         raise forms.ValidationError('Not enough words')
+    #     return notes

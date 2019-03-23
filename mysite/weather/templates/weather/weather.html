@@ -1,6 +1,58 @@
 {% extends 'weather/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Weather</title>
+{% endblock %}
 
 {% block content %}
-<h3>Hello there</h3>
+<table>
+    <th colspan="10">Latest Observations</th>
+<tr>
+    <th rowspan="2">Date</th>
+    <th>Perc Tmp</th>
+    <th>Perc Hum</th>
+    <th>Obs Tmp</th>
+    <th>Oobs Hmd</th>
+    <th>Obs hPa</th>
+
+    <th>Sur Wind Dir</th>
+    <th>Sur Wind Speed</th>
+    <th>Aloft Wind Dir</th>
+    <th>Aloft Wind Speed</th>
+</tr>
+<tr>
+    <th>Cloud Obs</th>
+    <th>Cloud Cov</th>
+    <th>Precipitation</th>
+    <th>Phenomena</th>
+    <th colspan="5">Notes</th>
+</tr>
+
+{% for observation in observations %}
+    <tr class="observation-row-one">
+        <td rowspan="2">{{ observation.observation_date | date:"H:i" }}<br>
+            {{ observation.observation_date | date:"d/m/y" }}</td>
+        <td>{{ observation.perceived_outdoor_temperature | default:"--" }}F</td>
+        <td>{{ observation.perceived_outdoor_humidity | default:"--" }}%</td>
+        <td>{{ observation.observed_outdoor_temperature | default:"--" }}F</td>
+        <td>{{ observation.observed_outdoor_humidity | default:"--" }}%</td>
+        <td>{{ observation.observed_pressure_millibars | default:"--" }}</td>
+
+        <td>{{ observation.surface_wind_direction | default:"--" }}</td>
+        <td>{{ observation.surface_wind_speed | default:"--" }}</td>
+        <td>{{ observation.aloft_wind_direction | default:"--" }}</td>
+        <td>{{ observation.aloft_wind_speed | default:"--" }}</td>
+    </tr>
+    <tr class="observation-row-two">
+        <!-- <td>{{ observation.observation_date | date:"d/m/y" }}</td> -->
+        <td>{{ observation.cloud_observation }}</td>
+        <td>{{ observation.cloud_coverage.cloud_coverage_short }}</td>
+        <td>{{ observation.precipitation_observation }}</td>
+        <td>{{ observation.phenomena_observation }}</td>
+        <td colspan="5">{{ observation.notes }}</td>
+    </tr>
+{% endfor %}
+</table>
 
 {% endblock %}
