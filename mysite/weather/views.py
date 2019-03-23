@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
@@ -23,6 +24,7 @@ def observations(request):
 def observation_detail(request):
     pass
 
+@login_required(login_url='/accounts/login/')
 def observation_new(request):
     if request.method == 'POST':
         form = ObservationForm(request.POST)
