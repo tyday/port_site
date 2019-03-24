@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- <title>&#123&#123website.passable&#125&#125</title> -->
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Raleway|Work+Sans:200,700" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+        <link rel="shortcut icon" type="image/png" href="{% static 'blog/images/favicon.ico' %}"/>
         {% block head %}
         <title>tylerday.net</title>
         {% endblock %} 
@@ -34,8 +34,8 @@
     <footer>
         <!-- social networking links -->
         <div class="social">
-            <a href="https://github.com/tyday"><img src="/static/images/github-brands.svg" alt="click to go to my github repository" class="social-icons"></a>
-            <a href="https://linkedin.com/in/ty-day"><img src="/static/images/linkedin-in-brands.svg" alt="click to see my profile on linkedin" class="social-icons"></a>
+            <a href="https://github.com/tyday"><img src="{% static 'blog/images/github-brands.svg' %}" alt="click to go to my github repository" class="social-icons"></a>
+            <a href="https://linkedin.com/in/ty-day"><img src="{% static 'blog/images/linkedin-in-brands.svg' %}" alt="click to see my profile on linkedin" class="social-icons"></a>
         </div>
         <p>&#169 2018 by Tyler Day</p>
     </footer>
