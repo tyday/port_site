@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views.generic import ListView
@@ -15,7 +16,6 @@ class ObservationList(ListView):
 def weather(request):
     # return HttpResponse("Hello, welcome to the weather app.")
     observations = Observation.objects.order_by('-observation_date')
-    # print(observations)
     return render(request, 'weather/weather.html', {'observations':observations})
 
 def observations(request):
@@ -33,6 +33,8 @@ def observation_new(request):
             print('is valid')
             observation = form.save(commit=False)
             observation.save()
+            messages.add_message(request, messages.SUCCESS, 'Your observation was saved.')
+            return redirect('weather')
         else:
             print('not valid')
             # form = ObservationForm()
