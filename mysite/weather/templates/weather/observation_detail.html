@@ -3,11 +3,10 @@
 
 {% block content %}
 
-<p>{{ observation }}</p>
-<p>{{ observation.observation_date }}</p>
+
 <table>
     <th colspan="10" id="observation-table" data-ztime="{{ observation }}"
-        >Observation for {{ observation.observation_date }} UTC
+        >Observation for {{ observation.observation_date|date:"F, n, Y, H:i e" }}
         <p id="observation-localtime"></p>
         <a href="{% url 'observation_edit' pk=observation.pk %}">Edit</a>
     </th>
