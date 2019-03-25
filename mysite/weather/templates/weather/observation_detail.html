@@ -7,7 +7,7 @@
 <p>{{ observation.observation_date }}</p>
 <table>
     <th colspan="10">Observation for {{ observation.observation_date }} UTC<br>
-    <a href="#">Edit</a></th>
+    <a href="{% url 'observation_edit' pk=observation.pk %}">Edit</a></th>
     <tr><th>Perceived Temp</th><td>{{ observation.perceived_outdoor_temperature | default:"--" }} &#176;F</td></tr>
     <tr><th>Perceived humidity</th><td>{{ observation.perceived_outdoor_humidity | default:"--" }}%</td></tr>
     <tr><th>Observed Temp</th><td>{{ observation.observed_outdoor_temperature | default:"--" }} &#176;F</td></tr>

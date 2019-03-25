@@ -18,8 +18,21 @@ def weather(request):
     observations = Observation.objects.order_by('-observation_date')
     return render(request, 'weather/weather.html', {'observations':observations})
 
-def observations(request):
-    pass
+@login_required(login_url='/accounts/login/')
+def observation_edit(request,pk):
+    observation = get_object_or_404(Observation, pk=pk)
+
+    if request.method == 'POST':
+        form = ObservationForm(request.POST, instance=observation)
+        if form.is_valid():
+            observation = form.save(commit=False)
+            observation.save()
+            return redirect('observation_detail', pk=observation.pk)
+        else:
+            return render(request, 'weather/observation_edit.html', {'form':form})
+    else:
+        form = ObservationForm(instance=observation)
+        return render(request, 'weather/observation_edit.html', {'form':form})
 
 def observation_detail(request, pk):
     observation = get_object_or_404(Observation, pk=pk)

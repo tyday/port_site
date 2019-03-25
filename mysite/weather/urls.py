@@ -7,4 +7,5 @@ urlpatterns = [
     path('weather/<int:pk>/', views.observation_detail, name='observation_detail'),
     path('weather/new/', views.observation_new, name='observation_new'),
     path('observations/', views.ObservationList.as_view()),
+    path('observation/<int:pk>/edit/', views.observation_edit, name='observation_edit'),
 ]
