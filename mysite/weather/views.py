@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views.generic import ListView
@@ -21,8 +21,9 @@ def weather(request):
 def observations(request):
     pass
 
-def observation_detail(request):
-    pass
+def observation_detail(request, pk):
+    observation = get_object_or_404(Observation, pk=pk)
+    return render(request, 'weather/observation_detail.html', {'observation':observation})
 
 @login_required(login_url='/accounts/login/')
 def observation_new(request):
