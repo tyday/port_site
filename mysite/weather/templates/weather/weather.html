@@ -41,16 +41,16 @@
     <tr class="observation-row-one">
         <td rowspan="2"> <a href="{% url 'observation_detail' pk=observation.pk %}">{{ observation.observation_date | date:"H:i" }}<br>
             {{ observation.observation_date | date:"m/d/y" }}</a></td>
-        <td>{{ observation.perceived_outdoor_temperature | default:"--" }}F</td>
-        <td>{{ observation.perceived_outdoor_humidity | default:"--" }}%</td>
-        <td>{{ observation.observed_outdoor_temperature | default:"--" }}F</td>
-        <td>{{ observation.observed_outdoor_humidity | default:"--" }}%</td>
-        <td>{{ observation.observed_pressure_millibars | default:"--" }}</td>
+        <td>{{ observation.perceived_outdoor_temperature | default_if_none:"--" }}F</td>
+        <td>{{ observation.perceived_outdoor_humidity | default_if_none:"--" }}%</td>
+        <td>{{ observation.observed_outdoor_temperature | default_if_none:"--" }}F</td>
+        <td>{{ observation.observed_outdoor_humidity | default_if_none:"--" }}%</td>
+        <td>{{ observation.observed_pressure_millibars | default_if_none:"--" }}</td>
 
-        <td>{{ observation.surface_wind_direction | default:"--" }}</td>
-        <td>{{ observation.surface_wind_speed | default:"--" }}</td>
-        <td>{{ observation.aloft_wind_direction | default:"--" }}</td>
-        <td>{{ observation.aloft_wind_speed | default:"--" }}</td>
+        <td>{{ observation.surface_wind_direction | default_if_none:"--" }}</td>
+        <td>{{ observation.surface_wind_speed | default_if_none:"--" }}</td>
+        <td>{{ observation.aloft_wind_direction | default_if_none:"--" }}</td>
+        <td>{{ observation.aloft_wind_speed | default_if_none:"--" }}</td>
     </tr>
     <tr class="observation-row-two">
         <!-- <td>{{ observation.observation_date | date:"d/m/y" }}</td> -->

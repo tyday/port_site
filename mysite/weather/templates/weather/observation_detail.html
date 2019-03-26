@@ -9,20 +9,20 @@
         <p id="observation-localtime"></p>
         <a href="{% url 'observation_edit' pk=observation.pk %}">Edit</a>
     </th>
-    <tr><th>Perceived Temp</th><td>{{ observation.perceived_outdoor_temperature | default:"--" }} &#176;F</td></tr>
-    <tr><th>Perceived humidity</th><td>{{ observation.perceived_outdoor_humidity | default:"--" }}%</td></tr>
-    <tr><th>Observed Temp</th><td>{{ observation.observed_outdoor_temperature | default:"--" }} &#176;F</td></tr>
-    <tr><th>Observed Humidity</th><td>{{ observation.observed_outdoor_humidity | default:"--" }} F</td></tr>
-    <tr><th>Observed Pressure hPa</th><td>{{ observation.observed_pressure_millibars | default:"--" }} hPa</td></tr>
-    <tr><th>Surface Wind Dir</th><td>{{ observation.surface_wind_direction | default:"--" }}&#176;</td></tr>
-    <tr><th>Surface Wind Spd</th><td>{{ observation.surface_wind_speed | default:"--" }}</td></tr>
-    <tr><th>Aloft Wind Dir</th><td>{{ observation.aloft_wind_direction | default:"--" }}&#176;</td></tr>
-    <tr><th>Aloft Wind Spd</th><td>{{ observation.aloft_wind_speed | default:"--" }}</td></tr>
-    <tr><th>Cloud Observations</th><td>{{ observation.cloud_observation | default:"--" }}</td></tr>
-    <tr><th>Cloud Coverage</th><td>{{ observation.cloud_coverage | default:"--" }}</td></tr>
-    <tr><th>Precipitation Observation</th><td>{{ observation.precipitation_observation | default:"--" }}</td></tr>
-    <tr><th>Phenomena Observation</th><td>{{ observation.phenomena_observation | default:"--" }}</td></tr>
-    <tr><th>Notes</th><td>{{ observation.notes | default:"--" }}</td></tr>
+    <tr><th>Perceived Temp</th><td>{{ observation.perceived_outdoor_temperature | default_if_none:"--" }} &#176;F</td></tr>
+    <tr><th>Perceived humidity</th><td>{{ observation.perceived_outdoor_humidity | default_if_none:"--" }}%</td></tr>
+    <tr><th>Observed Temp</th><td>{{ observation.observed_outdoor_temperature | default_if_none:"--" }} &#176;F</td></tr>
+    <tr><th>Observed Humidity</th><td>{{ observation.observed_outdoor_humidity | default_if_none:"--" }} F</td></tr>
+    <tr><th>Observed Pressure hPa</th><td>{{ observation.observed_pressure_millibars | default_if_none:"--" }} hPa</td></tr>
+    <tr><th>Surface Wind Dir</th><td>{{ observation.surface_wind_direction | default_if_none:"--" }}&#176;</td></tr>
+    <tr><th>Surface Wind Spd</th><td>{{ observation.surface_wind_speed | default_if_none:"--" }}</td></tr>
+    <tr><th>Aloft Wind Dir</th><td>{{ observation.aloft_wind_direction | default_if_none:"--" }}&#176;</td></tr>
+    <tr><th>Aloft Wind Spd</th><td>{{ observation.aloft_wind_speed | default_if_none:"--" }}</td></tr>
+    <tr><th>Cloud Observations</th><td>{{ observation.cloud_observation | default_if_none:"--" }}</td></tr>
+    <tr><th>Cloud Coverage</th><td>{{ observation.cloud_coverage | default_if_none:"--" }}</td></tr>
+    <tr><th>Precipitation Observation</th><td>{{ observation.precipitation_observation | default_if_none:"--" }}</td></tr>
+    <tr><th>Phenomena Observation</th><td>{{ observation.phenomena_observation | default_if_none:"--" }}</td></tr>
+    <tr><th>Notes</th><td>{{ observation.notes | default_if_none:"--" }}</td></tr>
 
 
 </table>
