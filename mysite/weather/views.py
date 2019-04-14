@@ -18,7 +18,7 @@ def weather(request):
     observations = Observation.objects.order_by('-observation_date')
     return render(request, 'weather/weather.html', {'observations':observations})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/admin/login/')
 def observation_edit(request,pk):
     observation = get_object_or_404(Observation, pk=pk)
 
@@ -38,7 +38,7 @@ def observation_detail(request, pk):
     observation = get_object_or_404(Observation, pk=pk)
     return render(request, 'weather/observation_detail.html', {'observation':observation})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/admin/login/')
 def observation_new(request):
     if request.method == 'POST':
         form = ObservationForm(request.POST)
