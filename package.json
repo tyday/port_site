@@ -1,0 +1,35 @@
+{
+  "name": "tydaydotnet",
+  "version": "1.0.0",
+  "description": "This is the November 2018 attempt at a personal website. I cheated. I went to wix and drew something up real quick and I'm planning on copying that. The designs are simple and clean.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch --mode development ./mysite/weather/src/index.js --output ./mysite/weather/static/weather/js/main.js",
+    "build": "webpack --mode production ./mysite/weather/src/index.js --output ./mysite/weather/static/weather/js/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyday/port_site.git"
+  },
+  "author": "Ty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyday/port_site/issues"
+  },
+  "homepage": "https://github.com/tyday/port_site#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "weak-key": "^1.0.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
