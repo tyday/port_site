@@ -26,11 +26,11 @@ const Table = ({ data }) =>
           </tr>
           <tr>
               <td>Wind Direction</td>
-              <td>{data.windDirection.value ? data.windDirection.value.toFixed(0) : 'null'}</td>
+              <td>{data.windDirection.value ? data.windDirection.value.toFixed(0) : 'null'}&#0176;</td>
           </tr>
           <tr>
               <td>Wind Speed</td>
-              <td>{data.windSpeed.value ? (data.windSpeed.value * 2.237 ).toFixed(0) : "null"}</td>
+              <td>{data.windSpeed.value ? (data.windSpeed.value * 2.237 ).toFixed(0) : "null"} mph</td>
           </tr>
           <tr>
               <td>Metar</td>
