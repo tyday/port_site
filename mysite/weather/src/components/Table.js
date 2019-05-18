@@ -14,7 +14,7 @@ const Table = ({ data }) =>
           </tr>
           <tr>
               <td>Temp</td>
-              <td>{data.temperature.value ? data.temperature.value.toFixed(1) : 'null'}&#0176;F</td>
+              <td>{data.temperature.value ? (data.temperature.value *9/5 +32).toFixed(1) : 'null'}&#0176;F</td>
           </tr>
           <tr>
               <td>Humidity</td>
@@ -22,7 +22,7 @@ const Table = ({ data }) =>
           </tr>
           <tr>
               <td>Pressure</td>
-              <td>{data.barometricPressure.value ? (data.barometricPressure.value/100) : 'null'} mbar</td>
+              <td>{data.barometricPressure.value ? (data.barometricPressure.value/100) : 'null'} hPa</td>
           </tr>
           <tr>
               <td>Wind Direction</td>
