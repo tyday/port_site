@@ -3,7 +3,6 @@ import "../styles/AreaForecastDiscussion.css";
 
 export default function AreaForecastDiscussion(props) {
   function showAFD(e) {
-    console.log(e.target);
     var iAm = e.target;
     var content = iAm.nextElementSibling;
     if (content.style.display === "block") {
@@ -13,10 +12,9 @@ export default function AreaForecastDiscussion(props) {
     }
   }
   const afdList = props.afd.split("\n");
-  // console.log(afdList)
   return (
     <div className="text-content">
-      <button onClick={showAFD} className="collapsible">
+      <button onClick={showAFD} className="button collapsible">
         Open AFD
       </button>
       <div style={{display:"none"}}>

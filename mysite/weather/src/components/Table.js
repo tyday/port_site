@@ -9,33 +9,34 @@ const Table = ({ data }) =>
   ) : (
     <div className="column">
       <table>
+        <thead><tr><th colSpan='2'>Current Conditions</th></tr></thead>
           <tbody>
           <tr>
-              <td>Time</td>
+              <th>Time</th>
               <td>{data.timestamp ? data.timestamp : 'null'}</td>
           </tr>
           <tr>
-              <td>Temp</td>
+              <th>Temp</th>
               <td>{data.temperature.value ? (data.temperature.value *9/5 +32).toFixed(1) : 'null'}&#0176;F</td>
           </tr>
           <tr>
-              <td>Humidity</td>
+              <th>Humidity</th>
               <td>{data.relativeHumidity.value ? data.relativeHumidity.value.toFixed(0) : 'null'}%</td>
           </tr>
           <tr>
-              <td>Pressure</td>
+              <th>Pressure</th>
               <td>{data.barometricPressure.value ? (data.barometricPressure.value/100) : 'null'} hPa</td>
           </tr>
           <tr>
-              <td>Wind Direction</td>
+              <th>Wind Direction</th>
               <td>{data.windDirection.value ? data.windDirection.value.toFixed(0) : 'null'}&#0176;</td>
           </tr>
           <tr>
-              <td>Wind Speed</td>
+              <th>Wind Speed</th>
               <td>{data.windSpeed.value ? (data.windSpeed.value * 2.237 ).toFixed(0) : "null"} mph</td>
           </tr>
           <tr>
-              <td>Metar</td>
+              <th>Metar</th>
               <td>{data.rawMessage}</td>
           </tr>
           </tbody>

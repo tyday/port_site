@@ -20,5 +20,6 @@ function update_local_time(){
 
 function afterLoad(){
     update_success_messages()
-    update_local_time()
+    const wrapper = document.getElementById("observation-table");
+    wrapper ? update_local_time() : null;
 }
