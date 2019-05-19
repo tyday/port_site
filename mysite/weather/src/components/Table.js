@@ -13,7 +13,7 @@ const Table = ({ data }) =>
           <tbody>
           <tr>
               <th>Time</th>
-              <td>{data.timestamp ? data.timestamp : 'null'}</td>
+              <td>{data.timestamp ? Date(data.timestamp).toLocaleString() : 'null'}</td>
           </tr>
           <tr>
               <th>Temp</th>
