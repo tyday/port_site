@@ -44,7 +44,7 @@ class DataProvider extends Component {
       navigator.geolocation.getCurrentPosition(position => {
         var { latitude, longitude } = position.coords;
         // console.log(latitude, longitude);
-        const weatherUrl = `https://api.weather.gov/points/${latitude},${longitude}`;
+        const weatherUrl = `https://api.weather.gov/points/${latitude.toFixed(4)},${longitude.toFixed(4)}`;
         // console.log(weatherUrl);
         fetch(weatherUrl)
           .then(response => {
