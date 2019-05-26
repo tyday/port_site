@@ -4,11 +4,16 @@
 {% block content %}
 
 <table>
-    <th colspan="10" id="observation-table" data-ztime='{{ observation.observation_date|date:"Y-m-d" }}T{{ observation.observation_date|date:"H:i" }}Z'
-        >Observation for {{ observation.observation_date|date:"F, j, Y, H:i e" }}
+    <thead>
+        <tr>
+    <th colspan="2" id="observation-table" data-ztime='{{ observation.observation_date|date:"Y-m-d" }}T{{ observation.observation_date|date:"H:i" }}Z'
+        >Observation for {{ observation.observation_date|date:"F j, Y H:i e" }}
         <p id="observation-localtime"></p>
         <a href="{% url 'observation_edit' pk=observation.pk %}">Edit</a>
+    </tr>
     </th>
+</thead>
+<tbody>
     <tr><th>Perceived Temp</th><td>{{ observation.perceived_outdoor_temperature | default_if_none:"--" }} &#176;F</td></tr>
     <tr><th>Perceived humidity</th><td>{{ observation.perceived_outdoor_humidity | default_if_none:"--" }}%</td></tr>
     <tr><th>Observed Temp</th><td>{{ observation.observed_outdoor_temperature | default_if_none:"--" }} &#176;F</td></tr>
@@ -23,6 +28,7 @@
     <tr><th>Precipitation Observation</th><td>{{ observation.precipitation_observation | default_if_none:"--" }}</td></tr>
     <tr><th>Phenomena Observation</th><td>{{ observation.phenomena_observation | default_if_none:"--" }}</td></tr>
     <tr><th>Notes</th><td>{{ observation.notes | default_if_none:"--" }}</td></tr>
+</tbody>
 
 
 </table>
