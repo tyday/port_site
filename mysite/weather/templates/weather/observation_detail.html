@@ -4,7 +4,7 @@
 {% block content %}
 
 <table>
-    <th colspan="10" id="observation-table" data-ztime='{{ observation.observation_date|date:"Y-m-d" }}T{{ observation.observation_date|date:"H:i" }}'
+    <th colspan="10" id="observation-table" data-ztime='{{ observation.observation_date|date:"Y-m-d" }}T{{ observation.observation_date|date:"H:i" }}Z'
         >Observation for {{ observation.observation_date|date:"F, n, Y, H:i e" }}
         <p id="observation-localtime"></p>
         <a href="{% url 'observation_edit' pk=observation.pk %}">Edit</a>
