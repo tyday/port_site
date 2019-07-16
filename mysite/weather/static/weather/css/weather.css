@@ -4,11 +4,20 @@
 table {
   /* table-layout: fixed; */
   width: 100%;
-  width: calc(100% - 20px);
+  width: calc(100% - 30px);
   border-collapse: collapse;
   border: 3px solid #000;
   margin: 10px;
   /* padding: 2px; */
+  /* font-family: 'Work Sans', sans-serif; */
+  font-family: 'Raleway', serif;
+  font-size: 16px;
+}
+input{
+  font-size: 16px;
+}
+textarea{
+  font-size: 16px;
 }
 thead {
   border: 2px solid #000;
