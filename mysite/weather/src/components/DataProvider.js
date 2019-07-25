@@ -13,6 +13,18 @@ class DataProvider extends Component {
     placeholder: "Loading...",
     afd:'Loading...'
   };
+  autofillObservations(data){
+    const humidity = document.getElementById('id_observed_outdoor_humidity')
+    const temp = document.getElementById('id_observed_outdoor_temperature')
+    const pressure = document.getElementById('id_observed_pressure_millibars')
+    if(humidity){
+      console.log(data)
+      // humidity.innerHTML = data.
+      humidity.value = Math.round(data.relativeHumidity.value)
+      temp.value = Math.round(data.temperature.value *9/5+32)
+      pressure.value = Math.round(data.barometricPressure.value/100)
+    }
+  }
   getAreaForecastDiscussion(office){
       var afdUrl = `https://api.weather.gov/products/types/afd/locations/${office}`
     //   console.log(afdUrl)
@@ -82,7 +94,8 @@ class DataProvider extends Component {
                   })
                   .then(response => {
                     // console.log(response.properties);
-                    this.setState({ data: response.properties, loaded: true });
+                    this.setState({ data: response.properties, loaded: true });                    
+                    this.autofillObservations(response.properties)
                   });
               });
           });
