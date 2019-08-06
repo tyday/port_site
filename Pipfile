@@ -1,16 +1,16 @@
 [[source]]
+name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pypi"
+
+[dev-packages]
 
 [packages]
 gunicorn = "*"
-"psycopg2-binary" = "*"
+psycopg2-binary = "*"
 pytz = "*"
 Django = "*"
 Pillow = "*"
 
-[dev-packages]
-
 [requires]
-python_version = "3.7"
+python_version = "3.6"
