@@ -7,6 +7,10 @@ class ObservationForm(forms.ModelForm):
         model = Observation
         fields = ('observer',
                 'observation_date',
+                'latitude',
+                'longitude',
+                'city',
+                'state',
                 'perceived_outdoor_temperature',
                 'perceived_outdoor_humidity',
                 'observed_outdoor_temperature',

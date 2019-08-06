@@ -21,6 +21,11 @@ class Phenomena_choice(models.Model):
 class Observation(models.Model):
     observer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     observation_date = models.DateTimeField(default=timezone.now)
+    latitude = models.DecimalField(max_digits=7,decimal_places=4,blank=True)
+    longitude = models.DecimalField(max_digits=7,decimal_places=4, blank=True)
+    city = models.CharField(max_length=255,blank=True)
+    state = models.CharField(max_length=255,blank=True)
+
     perceived_outdoor_temperature = models.DecimalField(max_digits=4,decimal_places=1)
     perceived_outdoor_humidity = models.IntegerField()
     observed_outdoor_temperature = models.DecimalField(max_digits=4,decimal_places=1,blank=True, null=True)
