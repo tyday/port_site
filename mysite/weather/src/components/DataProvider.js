@@ -28,8 +28,8 @@ class DataProvider extends Component {
     const city = document.getElementById('id_city')
     const state = document.getElementById('id_state')
     if(humidity){
-      latitude.value = this.location.latitude.toFixed(4)
-      longitude.value = this.location.longitude.toFixed(4)
+      latitude.value = this.location.latitude.toFixed(2)
+      longitude.value = this.location.longitude.toFixed(2)
       city.value = this.location.city
       state.value = this.location.state
       // console.log(data)
