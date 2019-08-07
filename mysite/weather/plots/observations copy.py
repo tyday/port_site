@@ -4,13 +4,6 @@ import plotly.offline as pyo
 
 from weather.models import Observation
 
-def temperature_difference(a,b):
-    if not a:
-        return 0
-    if not b:
-        return 0
-    return a-b
-
 
 def weather_plot():
 
@@ -19,32 +12,21 @@ def weather_plot():
         minute=0, second=0) for a in Observation.objects.all()]
     observed_temps = [
         a.observed_outdoor_temperature for a in Observation.objects.all()]
-    perceived_temps = [
-        a.perceived_outdoor_temperature for a in Observation.objects.all()]
-    # temp_difference = [
-    #     a.perceived_outdoor_temperature - a.observed_outdoor_temperature for a in Observation.objects.all()
-    # ]
-    temp_difference = [diff for diff in map(temperature_difference, perceived_temps,observed_temps)]
-    print(temp_difference)
+    observed_humidity = [
+        a.observed_outdoor_humidity for a in Observation.objects.all()]
+    observed_pressure = [
+        a.observed_pressure_millibars for a in Observation.objects.all()]
     fig = make_subplots(specs=[[{"secondary_y": True}]])
-    trace0 = go.Scatter(
-        x=dates,
-        y=observed_temps,
-        mode='markers',
-        name='Observed Temperature',
-        marker = {
-            'size':[abs(a) for a in temp_difference],
-            'sizemode':'area',
-            'sizeref':2.*float(max(temp_difference))/(40.**2),
-            'sizemin':4,
-            'color': temp_difference,
-            'colorscale':'Bluered',
-            'showscale':True,
-        }
-        )
+    trace0 = go.Scatter(x=dates,y=observed_temps,name='Observed Temperature')
     
-
-    fig.add_trace(trace0)
+    trace1 = go.Scatter(
+        x=dates,
+        y=observed_pressure,
+        name='Observed Pressure',
+        mode='markers'
+    )
+    fig.add_trace(trace0, secondary_y=False)
+    fig.add_trace(trace1, secondary_y=True)
     fig.update_layout(title_text="Double Y Axis example",height=800)
     fig.update_xaxes(title_text="xaxix title")
     fig.update_yaxes(title_text="<b>primary</b> yaxis title",

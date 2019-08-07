@@ -1,0 +1,11 @@
+{% extends 'weather/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Weather</title>
+{% endblock %}
+
+{% block content %}
+<h1>Plot</h1>
+{{ plot|safe }}
+{% endblock content %}
