@@ -25,13 +25,14 @@ def weather_plot():
     #     a.perceived_outdoor_temperature - a.observed_outdoor_temperature for a in Observation.objects.all()
     # ]
     temp_difference = [diff for diff in map(temperature_difference, perceived_temps,observed_temps)]
-    print(temp_difference)
-    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    # print(temp_difference)
+    # fig = make_subplots(specs=[[{"secondary_y": True}]])
     trace0 = go.Scatter(
         x=dates,
         y=observed_temps,
         mode='markers',
         name='Observed Temperature',
+        text=[a for a in temp_difference],
         marker = {
             'size':[abs(a) for a in temp_difference],
             'sizemode':'area',
@@ -40,19 +41,36 @@ def weather_plot():
             'color': temp_difference,
             'colorscale':'Bluered',
             'showscale':True,
+            'colorbar': {
+                'title':{'text':'Difference between perceived and observed','side':'right'},
+            },            
+            # 'title':'Difference between perceived and observed'
         }
         )
-    
+    layout = go.Layout(
+        title='Perceived and observed temperarture',
+        xaxis= {
+            'title':'Date'
+        },
+        yaxis={
+            'title':'Fahrenheit'
+        },
+        height=800,
+        # zaxis={
+        #     'title':'Difference between perceived and observed'
+        # }
+    )
 
-    fig.add_trace(trace0)
-    fig.update_layout(title_text="Double Y Axis example",height=800)
-    fig.update_xaxes(title_text="xaxix title")
-    fig.update_yaxes(title_text="<b>primary</b> yaxis title",
-                     secondary_y=False)
-    fig.update_yaxes(
-        title_text="<b>secondary</b> yaxis title", secondary_y=True)
+    # fig.add_trace(trace0)
+    # fig.update_layout(title_text="Double Y Axis example",height=800)
+    # fig.update_xaxes(title_text="xaxix title")
+    # fig.update_yaxes(title_text="<b>primary</b> yaxis title",
+    #                  secondary_y=False)
+    # fig.update_yaxes(
+    #     title_text="<b>secondary</b> yaxis title", secondary_y=True)
     # fig.show()
     # plot = pyo.plot(fig, include_plotlyjs=False, output_type='div')
+    fig = go.Figure(data=[trace0],layout=layout)
     plot = pyo.plot(fig, include_plotlyjs=True, output_type='div')
     # plot = 'heelloo'
     # print(plot)
