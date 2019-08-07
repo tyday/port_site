@@ -30,14 +30,14 @@ def weather_plot():
     trace0 = go.Scatter(
         x=dates,
         y=observed_temps,
-        mode='markers',
+        mode='lines+markers',
         name='Observed Temperature',
         text=[a for a in temp_difference],
         marker = {
             'size':[abs(a) for a in temp_difference],
             'sizemode':'area',
-            'sizeref':2.*float(max(temp_difference))/(40.**2),
-            'sizemin':4,
+            'sizeref':2.*float(max(temp_difference))/(20.**2),
+            'sizemin':0,
             'color': temp_difference,
             'colorscale':'Bluered',
             'showscale':True,
@@ -45,6 +45,10 @@ def weather_plot():
                 'title':{'text':'Difference between perceived and observed','side':'right'},
             },            
             # 'title':'Difference between perceived and observed'
+        },
+        line={
+            'shape':'spline',
+            'smoothing':.5
         }
         )
     layout = go.Layout(
