@@ -61,11 +61,11 @@ def weather_plot():
         yaxis={
             'title':'Fahrenheit'
         },
-        height=800,
+        # height=800,
     )
 
     fig = go.Figure(data=[trace0],layout=layout)
-    plot = pyo.plot(fig, include_plotlyjs=True, output_type='div')
+    plot = pyo.plot(fig, include_plotlyjs=False, output_type='div')
     return plot
 
 def time_of_readings():
@@ -98,7 +98,8 @@ def time_of_readings():
         }
     )
     fig = go.Figure(data=data,layout=layout)
-    pyo.plot(fig)
+    plot = pyo.plot(fig, include_plotlyjs=False, output_type='div')
+    return plot
 
 if __name__ == '__main__':
     # weather_plot()
