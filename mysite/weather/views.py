@@ -7,7 +7,7 @@ from django.views.generic import ListView
 
 from .forms import ObservationForm
 from .models import Observation
-from .plots.observations import weather_plot
+from .plots.observations import weather_plot, time_of_readings
 
 class ObservationList(ListView):
     model = Observation
@@ -62,6 +62,7 @@ def observation_new(request):
     return render(request, 'weather/observation_edit.html', {'form': form})
 
 def plot(request):
-    plot = weather_plot()
+    # plot = weather_plot()
+    plot = time_of_readings()
     # print(plot)
     return render(request, 'weather/plot.html', {'plot': plot})

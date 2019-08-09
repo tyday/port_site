@@ -1,6 +1,8 @@
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.offline as pyo
+from pytz import timezone
+from django.utils.timezone import localtime
 
 from weather.models import Observation
 
@@ -60,26 +62,44 @@ def weather_plot():
             'title':'Fahrenheit'
         },
         height=800,
-        # zaxis={
-        #     'title':'Difference between perceived and observed'
-        # }
     )
 
-    # fig.add_trace(trace0)
-    # fig.update_layout(title_text="Double Y Axis example",height=800)
-    # fig.update_xaxes(title_text="xaxix title")
-    # fig.update_yaxes(title_text="<b>primary</b> yaxis title",
-    #                  secondary_y=False)
-    # fig.update_yaxes(
-    #     title_text="<b>secondary</b> yaxis title", secondary_y=True)
-    # fig.show()
-    # plot = pyo.plot(fig, include_plotlyjs=False, output_type='div')
     fig = go.Figure(data=[trace0],layout=layout)
     plot = pyo.plot(fig, include_plotlyjs=True, output_type='div')
-    # plot = 'heelloo'
-    # print(plot)
     return plot
 
+def time_of_readings():
+    eastern = timezone('US/Eastern')
+    # dates = [a.observation_date.astimezone(eastern).strftime('%I %p') for a in Observation.objects.all()]
+    # dates = [a.observation_date.astimezone(eastern).strftime('%I %p') for a in Observation.objects.order_by('observation_date__hour')]
+    dates = [a.observation_date.astimezone(eastern) for a in Observation.objects.order_by('observation_date__hour')]
+    dates = sorted(dates, key=lambda time: time.hour)
+    dates = [date.strftime('%I %p') for date in dates]
+    print(dates)
+    date_dict = {}
+    for date in dates:
+        if date in date_dict:
+            date_dict[date] += 1
+        else:
+            date_dict[date] = 1
+    data = [
+        go.Bar(
+            x=list(date_dict.keys()),
+            y=list(date_dict.values())
+        )
+    ]
+    layout = go.Layout(
+        title='Distribution of observations by time of day',
+        xaxis={
+            'title':'Hour of day'
+        },
+        yaxis={
+            'title':'Number of observations'
+        }
+    )
+    fig = go.Figure(data=data,layout=layout)
+    pyo.plot(fig)
 
 if __name__ == '__main__':
-    weather_plot()
+    # weather_plot()
+    time_of_readings()
