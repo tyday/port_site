@@ -18,11 +18,11 @@ def weather_plot():
 
     # dates = [a.observation_date.date() for a in Observation.objects.all()]
     dates = [a.observation_date.replace(
-        minute=0, second=0) for a in Observation.objects.all()]
+        minute=0, second=0) for a in Observation.objects.all().order_by('observation_date')]
     observed_temps = [
-        a.observed_outdoor_temperature for a in Observation.objects.all()]
+        a.observed_outdoor_temperature for a in Observation.objects.all().order_by('observation_date')]
     perceived_temps = [
-        a.perceived_outdoor_temperature for a in Observation.objects.all()]
+        a.perceived_outdoor_temperature for a in Observation.objects.all().order_by('observation_date')]
     # temp_difference = [
     #     a.perceived_outdoor_temperature - a.observed_outdoor_temperature for a in Observation.objects.all()
     # ]
