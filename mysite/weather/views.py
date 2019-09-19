@@ -7,6 +7,7 @@ from django.views.generic import ListView
 
 from .forms import ObservationForm
 from .models import Observation
+from .plots.observations import weather_plot, time_of_readings
 
 class ObservationList(ListView):
     model = Observation
@@ -42,9 +43,7 @@ def observation_detail(request, pk):
 def observation_new(request):
     if request.method == 'POST':
         form = ObservationForm(request.POST)
-        print('post-- observation_new')
         if form.is_valid():
-            print('is valid')
             observation = form.save(commit=False)
             observation.save()
             messages.add_message(request, messages.SUCCESS, 'Your observation was saved.')
@@ -59,3 +58,14 @@ def observation_new(request):
             }
         )
     return render(request, 'weather/observation_edit.html', {'form': form})
+
+def plot(request):
+    query = request.GET
+    if 'plot' in query:
+        if query['plot'] == 'time':
+            plot = time_of_readings()
+        else:
+            plot = weather_plot()
+    else:
+        plot = weather_plot()
+    return render(request, 'weather/plot.html', {'plot': plot})

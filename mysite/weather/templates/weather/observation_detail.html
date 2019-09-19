@@ -9,7 +9,9 @@
     <th colspan="2" id="observation-table" data-ztime='{{ observation.observation_date|date:"Y-m-d" }}T{{ observation.observation_date|date:"H:i" }}Z'
         >Observation for {{ observation.observation_date|date:"F j, Y H:i e" }}
         <p id="observation-localtime"></p>
+        {% if user.is_authenticated %}
         <a href="{% url 'observation_edit' pk=observation.pk %}">Edit</a>
+        {% endif %}
     </tr>
     </th>
 </thead>
@@ -17,7 +19,7 @@
     <tr><th>Perceived Temp</th><td>{{ observation.perceived_outdoor_temperature | default_if_none:"--" }} &#176;F</td></tr>
     <tr><th>Perceived humidity</th><td>{{ observation.perceived_outdoor_humidity | default_if_none:"--" }}%</td></tr>
     <tr><th>Observed Temp</th><td>{{ observation.observed_outdoor_temperature | default_if_none:"--" }} &#176;F</td></tr>
-    <tr><th>Observed Humidity</th><td>{{ observation.observed_outdoor_humidity | default_if_none:"--" }} F</td></tr>
+    <tr><th>Observed Humidity</th><td>{{ observation.observed_outdoor_humidity | default_if_none:"--" }} %</td></tr>
     <tr><th>Observed Pressure hPa</th><td>{{ observation.observed_pressure_millibars | default_if_none:"--" }} hPa</td></tr>
     <tr><th>Surface Wind Dir</th><td>{{ observation.surface_wind_direction | default_if_none:"--" }}&#176;</td></tr>
     <tr><th>Surface Wind Spd</th><td>{{ observation.surface_wind_speed | default_if_none:"--" }}</td></tr>
@@ -27,6 +29,8 @@
     <tr><th>Cloud Coverage</th><td>{{ observation.cloud_coverage | default_if_none:"--" }}</td></tr>
     <tr><th>Precipitation Observation</th><td>{{ observation.precipitation_observation | default_if_none:"--" }}</td></tr>
     <tr><th>Phenomena Observation</th><td>{{ observation.phenomena_observation | default_if_none:"--" }}</td></tr>
+    <tr><th>Coordinates</th><td>{{ observation.latitude | default_if_none:"--" }}, {{ observation.longitude | default_if_none:"--" }}</td></tr>
+    <tr><th>Location</th><td>{{ observation.city | default_if_none:"--" }}, {{ observation.state | default_if_none:"--" }}</td></tr>
     <tr><th>Notes</th><td>{{ observation.notes | default_if_none:"--" }}</td></tr>
 </tbody>
 

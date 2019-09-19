@@ -1,0 +1,12 @@
+{% extends 'weather/base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<title>Weather</title>
+{% endblock %}
+
+{% block content %}
+<h1>Plot</h1>
+{{ plot|safe }}
+{% endblock content %}
