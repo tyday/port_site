@@ -26,6 +26,7 @@ class ObservationForm(forms.ModelForm):
                 'precipitation_observation',
                 'phenomena_observation',
                 'notes',
+                'image',
                 )
     # def clean_notes(self):
     #     notes = self.cleaned_data['notes']

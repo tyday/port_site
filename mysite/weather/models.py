@@ -44,6 +44,7 @@ class Observation(models.Model):
     precipitation_observation = models.ForeignKey(Precipitation_choices,on_delete=models.CASCADE, blank=True, null=True)
     phenomena_observation = models.ForeignKey(Phenomena_choice,on_delete=models.CASCADE,blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return str(self.observation_date)
