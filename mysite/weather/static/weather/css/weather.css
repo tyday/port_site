@@ -78,6 +78,10 @@ th {
 .button:hover {
   border-color: rgba(255, 255, 255, 1);
 }
+#observation_image{
+  width: 100%;
+  object-fit: contain;
+}
 @media all and (max-width: 30em) {
    .button {
     display: block;

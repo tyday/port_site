@@ -1,4 +1,5 @@
 {% extends 'weather/base.html' %}
+{% load static %}
 {% load tz %}
 
 {% block content %}
@@ -32,6 +33,11 @@
     <tr><th>Coordinates</th><td>{{ observation.latitude | default_if_none:"--" }}, {{ observation.longitude | default_if_none:"--" }}</td></tr>
     <tr><th>Location</th><td>{{ observation.city | default_if_none:"--" }}, {{ observation.state | default_if_none:"--" }}</td></tr>
     <tr><th>Notes</th><td>{{ observation.notes | default_if_none:"--" }}</td></tr>
+    <tr><th>Image</th><td>
+        {% if observation.image %}
+        <img id="observation_image" src={{  observation.image.url  }}>
+        {% endif %}
+    </td></tr>
 </tbody>
 
 
