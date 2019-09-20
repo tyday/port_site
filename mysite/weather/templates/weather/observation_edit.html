@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2 class="text-content">New Observation</h2>
-<form class="weather-observation-form" method="post">
+<form class="weather-observation-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{ form.as_table }}

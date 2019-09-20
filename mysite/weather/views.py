@@ -42,7 +42,7 @@ def observation_detail(request, pk):
 @login_required(login_url='/admin/login/')
 def observation_new(request):
     if request.method == 'POST':
-        form = ObservationForm(request.POST)
+        form = ObservationForm(request.POST, request.FILES)
         if form.is_valid():
             observation = form.save(commit=False)
             observation.save()
