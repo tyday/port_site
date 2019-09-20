@@ -24,7 +24,7 @@ def observation_edit(request,pk):
     observation = get_object_or_404(Observation, pk=pk)
 
     if request.method == 'POST':
-        form = ObservationForm(request.POST, instance=observation)
+        form = ObservationForm(request.POST, request.FILES, instance=observation)
         if form.is_valid():
             observation = form.save(commit=False)
             observation.save()
