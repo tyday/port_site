@@ -4,7 +4,7 @@
 table {
   /* table-layout: fixed; */
   width: 100%;
-  width: calc(100% - 30px);
+  width: calc(100vw - 30px);
   border-collapse: collapse;
   border: 3px solid #000;
   margin: 10px;
@@ -15,6 +15,7 @@ table {
 }
 input{
   font-size: 16px;
+  max-width: 100%;
 }
 select{
   font-size: 16px;
@@ -81,5 +82,10 @@ th {
    .button {
     display: block;
     margin: 0.2em auto;
+  }
+}
+@media screen and (max-width: 400px){
+  #id_image{
+    width:180px;
   }
 }
