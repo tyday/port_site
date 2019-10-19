@@ -134,6 +134,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
+FILE_UPLOAD_PERMISSIONS = 0o644
+
 # Email handler
 # https://wsvincent.com/django-contact-form/
 if DEBUG == True:
