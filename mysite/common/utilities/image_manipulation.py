@@ -29,7 +29,7 @@ def rotate_image(filepath):
 def create_responsive_images(filepath, url):
     try:
         srcset = ""
-        widths = [100,500,1000]
+        widths = [100,500,1000, 2000]
         # url = url
         image = Image.open(filepath)
         longest_side = max(image.height, image.width)
