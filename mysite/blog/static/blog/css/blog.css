@@ -54,7 +54,8 @@ h1 {
     text-decoration: none;
 }  */
 .post-image{
-    width: 320px;
+    width: 55vw;
+    max-width: 600px;
     height: auto;
     object-fit: cover;
 }
