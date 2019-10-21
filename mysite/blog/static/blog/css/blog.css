@@ -53,9 +53,14 @@ h1 {
     color: #000000;
     text-decoration: none;
 }  */
-.post-image{
+.post-image-detail{
     width: 55vw;
     max-width: 600px;
+    height: auto;
+    object-fit: cover;
+}
+.post-image{
+    width: 320px;
     height: auto;
     object-fit: cover;
 }
