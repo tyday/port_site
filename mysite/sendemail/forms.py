@@ -5,7 +5,7 @@ class ContactForm(forms.Form):
     from_name = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder':'Name*'}),
         required=True)
-    from_email = forms.EmailField(widget=forms.TextInput(
+    from_email = forms.EmailField(widget=forms.EmailInput(
         attrs={'class' : 'email-from',
         'placeholder':'Email*'}),
         required=True)
