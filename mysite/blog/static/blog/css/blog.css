@@ -227,6 +227,7 @@ h1 {
 }
 .messages {
     position: absolute;
+    left: 10%;
 }
 .success {
   display: flex;

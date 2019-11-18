@@ -1,16 +1,17 @@
 window.onload = afterLoad()
 
-function update_success_messages(){
-    success_messages = document.getElementsByClassName('success')
-    // console.log('ran')
-    // console.log(success_messages)
-    for (success_message of success_messages) { 
-        console.log('ran again')
-        console.log(success_message)
-        // success_message.addeventlistener('click', closeMessage)
-        success_message.onclick = function() {this.parentNode.removeChild(this);}
-    }
-}
+// Replaced this function with on click in the template
+// function update_success_messages(){
+//     success_messages = document.getElementsByClassName('success')
+//     // console.log('ran')
+//     // console.log(success_messages)
+//     for (success_message of success_messages) { 
+//         console.log('ran again')
+//         console.log(success_message)
+//         // success_message.addeventlistener('click', closeMessage)
+//         success_message.onclick = function() {this.parentNode.removeChild(this);}
+//     }
+// }
 function update_local_time(){
     time = new Date(document.getElementById('observation-table').dataset.ztime)
     console.log(time)
@@ -19,7 +20,7 @@ function update_local_time(){
 }
 
 function afterLoad(){
-    update_success_messages()
+    // update_success_messages()
     const wrapper = document.getElementById("observation-table");
     wrapper ? update_local_time() : null;
 }
