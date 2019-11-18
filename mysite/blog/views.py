@@ -31,6 +31,10 @@ def index(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('index')
+        else:
+            # Form isnt valid. Set posts and projects and move on
+            posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
+            projects = Project.objects.filter(display=True).order_by('-importance')
     return render(request, 'blog/index.html', {'posts': posts, 'projects':projects, 'form':form})
     
 def post_list(request):
