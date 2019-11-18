@@ -40,8 +40,17 @@
 {% for observation in observations %}
     
     <tr class="observation-row-one">
-        <td rowspan="2"> <a href="{% url 'observation_detail' pk=observation.pk %}">{{ observation.observation_date | date:"H:i" }}<br>
-            {{ observation.observation_date | date:"m/d/y" }}</a></td>
+        <td rowspan="2"> 
+            {% if observation.image %}
+            <b>
+            <a href="{% url 'observation_detail' pk=observation.pk %}">{{ observation.observation_date | date:"H:i" }}<br>
+            {{ observation.observation_date | date:"m/d/y" }}</a>
+            </b>
+            {% else %}
+            <a href="{% url 'observation_detail' pk=observation.pk %}">{{ observation.observation_date | date:"H:i" }}<br>
+            {{ observation.observation_date | date:"m/d/y" }}</a>
+            {% endif %}
+        </td>
         <td>{{ observation.perceived_outdoor_temperature | default_if_none:"--" }}F</td>
         <td>{{ observation.perceived_outdoor_humidity | default_if_none:"--" }}%</td>
         <td>{{ observation.observed_outdoor_temperature | default_if_none:"--" }}F</td>

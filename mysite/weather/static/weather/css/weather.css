@@ -82,6 +82,10 @@ th {
   width: 100%;
   object-fit: contain;
 }
+.navigation_buttons{
+  display: flex;
+  justify-content: space-around;
+}
 @media all and (max-width: 30em) {
    .button {
     display: block;

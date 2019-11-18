@@ -3,7 +3,13 @@
 {% block content %}
     <div class="post-detail">
         {% if post.photo %}
-        <img src="{{ MEDIA_URL }}{{ post.photo.image_file }}" alt="{{ post.photo_alt_text }}" class="post-image">
+            <img 
+            {% if post.photo.source_set %}
+            srcset="{{ post.photo.source_set }}"
+            {% endif %}
+            src="{{ MEDIA_URL }}{{ post.photo.image_file }}" 
+            sizes="55vw"
+            alt="{{ post.photo_alt_text }}" class="post-image-detail">
         {% endif %}
         <div class="post-contents">
         {% if post.published_date %}

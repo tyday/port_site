@@ -4,6 +4,10 @@
 <!-- <div class="project-card"> -->
     
     <image class="project-image"
+    {% if project.images.first.source_set %}
+            srcset="{{ project.images.first.source_set }}"
+            sizes="250px"
+            {% endif %}
         src="{{ MEDIA_URL }}{{ project.images.first.image_file }}"
         alt="{{ project.images.first.alt_text }}"
         >

@@ -35,12 +35,24 @@
     <tr><th>Notes</th><td>{{ observation.notes | default_if_none:"--" }}</td></tr>
     <tr><th>Image</th><td>
         {% if observation.image %}
-        <img id="observation_image" src={{  observation.image.url  }}>
+        <img id="observation_image" 
+            {% if observation.source_set %}
+                srcset="{{ observation.source_set }}"
+            {% endif %}
+            src={{  observation.image.url  }} >
         {% endif %}
     </td></tr>
 </tbody>
 
 
 </table>
-
+<div class="navigation_buttons">
+    <a href={{ observation.get_previous_by_observation_date.get_absolute_url }}>
+            {{ observation.get_previous_by_observation_date.observation_date }}
+    </a>
+    <a href={{ observation.get_next_by_observation_date.get_absolute_url }}>
+            {{ observation.get_next_by_observation_date.observation_date }}
+    </a>
+</div>
+<br>
 {% endblock %}
