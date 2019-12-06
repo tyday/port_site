@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from django.utils import timezone
@@ -15,8 +16,17 @@ class ObservationList(ListView):
 # Create your views here.
 
 def weather(request):
-    # return HttpResponse("Hello, welcome to the weather app.")
-    observations = Observation.objects.order_by('-observation_date')
+    observation_list = Observation.objects.order_by('-observation_date')
+    page = request.GET.get('page', 1)
+    print(page)
+
+    paginator = Paginator(observation_list, 10)
+    try:
+        observations = paginator.page(page)
+    except PageNotAnInteger:
+        observations = paginator.page(1)
+    except EmptyPage:
+        observations = paginator.page(paginator.num_pages)
     return render(request, 'weather/weather.html', {'observations':observations})
 
 @login_required(login_url='/admin/login/')

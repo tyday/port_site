@@ -1,7 +1,7 @@
 {% extends 'weather/base.html' %}
 
 {% block content %}
-
+<section class="main-content">
 <h2 class="text-content">New Observation</h2>
 <form class="weather-observation-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -15,5 +15,5 @@
 </form>
 <br>
 <div id="app"></div>
-
+</section>
 {% endblock %}

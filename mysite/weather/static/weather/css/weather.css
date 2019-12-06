@@ -1,5 +1,5 @@
-.text-content{
-  margin: 10px;
+.main-content{
+  margin: 0 10px;
 }
 table {
   /* table-layout: fixed; */
@@ -7,7 +7,7 @@ table {
   width: calc(100vw - 30px);
   border-collapse: collapse;
   border: 3px solid #000;
-  margin: 10px;
+  margin: 10px 0;
   /* padding: 2px; */
   /* font-family: 'Work Sans', sans-serif; */
   font-family: 'Raleway', serif;
@@ -71,6 +71,14 @@ th {
 .navigation_buttons{
   display: flex;
   justify-content: space-around;
+}
+.pagination{
+  display: flex;
+  flex-wrap: wrap;
+}
+.pagination li{
+  list-style-type: none;
+  padding: 5px;
 }
 @media all and (max-width: 30em) {
    .button {

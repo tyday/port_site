@@ -13,6 +13,7 @@
     {% endfor %}
 </ul>
 {% endif %}
+<section class="main-content">
 <div id="app"></div>
 <table>
     <th colspan="10">Latest Observations</th>
@@ -38,6 +39,7 @@
 </tr>
 
 {% for observation in observations %}
+
     
     <tr class="observation-row-one">
         <td rowspan="2"> 
@@ -72,5 +74,26 @@
     </tr>
 {% endfor %}
 </table>
-
+{% if observations.has_other_pages %}
+  <ul class="pagination">
+    {% if observations.has_previous %}
+      <li><a href="?page={{ observations.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in observations.paginator.page_range %}
+      {% if observations.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if observations.has_next %}
+      <li><a href="?page={{ observations.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</section>
 {% endblock %}
