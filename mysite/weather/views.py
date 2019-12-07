@@ -6,9 +6,12 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.views.generic import ListView
 
+from rest_framework import viewsets
+
 from .forms import ObservationForm
 from .models import Observation
 from .plots.observations import weather_plot, time_of_readings
+from .serializers import ObservationSerializer
 
 class ObservationList(ListView):
     model = Observation
@@ -79,3 +82,7 @@ def plot(request):
     else:
         plot = weather_plot()
     return render(request, 'weather/plot.html', {'plot': plot})
+
+class ObservationViewSet(viewsets.ModelViewSet):
+    queryset = Observation.objects.all().order_by('-observation_date')
+    serializer_class = ObservationSerializer
