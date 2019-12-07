@@ -114,8 +114,12 @@ class DataProvider extends Component {
                   })
                   .then(response => {
                     // console.log(response.properties);
-                    this.setState({ data: response.properties, loaded: true });                    
-                    this.autofillObservations(response.properties)
+                    this.setState({ data: response.properties, loaded: true });
+                    if (document.getElementById('id_latitude').value === ''){
+                      this.autofillObservations(response.properties)
+                      console.log('autofill observation ran')
+                    }
+                    
                   });
               });
           });
