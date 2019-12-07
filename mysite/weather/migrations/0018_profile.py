@@ -4,6 +4,15 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 
+def create_profiles(apps, schema_editor):
+    # We can't import the Person model directly as it may be a newer
+    # version than this migration expects. We use the historical version.
+    User = apps.get_model('auth', 'User')
+    Profile = apps.get_model('weather', 'Profile')
+    for user in User.objects.all():
+        Profile.objects.get_or_create(user=user)
+def remove_profiles(apps, schema_editor):
+    pass
 
 class Migration(migrations.Migration):
 
@@ -22,4 +31,5 @@ class Migration(migrations.Migration):
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
+        migrations.RunPython(create_profiles, remove_profiles),
     ]
