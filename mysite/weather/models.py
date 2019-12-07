@@ -1,4 +1,4 @@
-import os
+import os, pytz
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -131,3 +131,33 @@ def update_image(sender, instance, **kwargs):
         post_save.disconnect(update_image, sender=Observation, dispatch_uid="update_image_observation")
         instance.save()
         post_save.connect(update_image, sender=Observation, dispatch_uid="update_image_observation")
+
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=100, blank=True)
+    common_timezones = [(tz,tz) for tz in pytz.common_timezones]
+    timezone = models.CharField(max_length=100, blank=True, choices=common_timezones)
+
+    def __str__(self):
+        return f'{self.user}'
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    print(f'create ran {instance}')
+    if created:
+        print('if created ran')
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    print('save ran')
+    try:
+        print('save if instance ran')
+        instance.profile.save()
+    except:
+        print('save failed')
