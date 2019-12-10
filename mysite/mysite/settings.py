@@ -148,3 +148,10 @@ else:
     EMAIL_HOST_PASSWORD = secret_settings.EMAIL_HOST_PASSWORD
     EMAIL_PORT = secret_settings.EMAIL_PORT
     EMAIL_USE_TLS = secret_settings.EMAIL_USE_TLS
+
+# Django Rest Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
+}
