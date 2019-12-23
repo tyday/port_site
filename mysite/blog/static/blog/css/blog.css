@@ -225,36 +225,46 @@ h1 {
 .project-link a {
   text-decoration: underline;
 }
+.message--div {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
 .messages {
-    position: absolute;
-    left: 10%;
+  /* position: absolute;
+    left: 10%; */
 }
 .success {
   display: flex;
-  justify-content: center;  
-  transition: opacity .5s
+  justify-content: center;
+  max-height: 100px;
+  transition: opacity 0.5s, max-height .5s;
 }
 .success > div {
   cursor: pointer;
   padding: 11px 19px 14px 19px;
-  background-color: #8ef08e;
-  border-radius: 5px;
+  background-color: #70fd8c;
+  border-radius: 3px;
   margin: 7px;
 }
 .error {
   display: flex;
   justify-content: center;
-  transition: opacity .5s
+  max-height: 100px;
+  transition: opacity 0.5s, max-height .5s;
 }
 .error > div {
   cursor: pointer;
   padding: 11px 19px 14px 19px;
-  background-color: #f09d8e;
-  border-radius: 5px;
+  background-color: #ef9191;
+  border-radius: 3px;
   margin: 7px;
 }
-.fadeout{
-    opacity: 0;
+.fadeout {
+  opacity: 0;
+  max-height: 0;
 }
 @media only screen and (max-width: 500px) {
   .project-detail {

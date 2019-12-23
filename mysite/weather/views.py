@@ -21,7 +21,6 @@ class ObservationList(ListView):
 def weather(request):
     observation_list = Observation.objects.order_by('-observation_date')
     page = request.GET.get('page', 1)
-    print(page)
 
     paginator = Paginator(observation_list, 10)
     try:
@@ -30,6 +29,7 @@ def weather(request):
         observations = paginator.page(1)
     except EmptyPage:
         observations = paginator.page(paginator.num_pages)
+
     return render(request, 'weather/weather.html', {'observations':observations})
 
 @login_required(login_url='/admin/login/')
