@@ -120,7 +120,7 @@ h1 {
 }
 .parallax {
   /* The image used */
-  background-image: url("/static/images/AdobeStock_94764141.jpeg");
+  background-image: url("/static/blog/images/AdobeStock_94764141.jpeg");
   /* Set a specific height */
   min-height: 500px;
 
@@ -131,7 +131,7 @@ h1 {
   background-size: cover;
 }
 .parallax-two {
-  background-image: url("/static/images/AdobeStock_176876124_small.jpeg");
+  background-image: url("/static/blog/images/AdobeStock_176876124_small.jpeg");
   min-height: 200px;
   background-attachment: fixed;
   background-position: center;
