@@ -15,7 +15,7 @@ def index(request):
         form = ContactForm()
         posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:2]
         projects = Project.objects.filter(display=True).order_by('-importance')
-        print(posts,projects)
+        # print(posts,projects)
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -29,9 +29,10 @@ def index(request):
                         {message}"""
             try:
                 send_mail('tylerday.net: contact message', message, 'admin@tylerday.net', ['tyrday@gmail.com'])
+                messages.add_message(request, messages.SUCCESS, 'Thank you, your information was submitted.')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-                messages.add_message(request, messages.SUCCESS, 'Thank you, your information was submitted.')
+                messages.add_message(request, messages.ERROR, 'Sorry, we ran into a problem. Please try again in a few minutes.')
             return redirect('index')
         else:
             # Form isnt valid. Set posts and projects and move on

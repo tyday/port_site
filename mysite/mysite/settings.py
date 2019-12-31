@@ -149,6 +149,9 @@ else:
     EMAIL_PORT = secret_settings.EMAIL_PORT
     EMAIL_USE_TLS = secret_settings.EMAIL_USE_TLS
 
+ADMINS = secret_settings.ADMINS
+SERVER_EMAIL = secret_settings.SERVER_EMAIL
+
 # Django Rest Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
