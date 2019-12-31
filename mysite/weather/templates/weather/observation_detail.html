@@ -8,7 +8,7 @@
 <table>
     <thead>
         <tr>
-    <th colspan="2" id="observation-table" data-ztime='{{ observation.observation_date|date:"Y-m-d" }}T{{ observation.observation_date|date:"H:i" }}Z'
+    <th colspan="2" id="observation-table" data-ztime='{{ observation.observation_date|utc|date:"Y-m-d" }}T{{ observation.observation_date|utc|date:"H:i" }}Z'
         >Observation for {{ observation.observation_date|date:"F j, Y H:i e" }}
         <p id="observation-localtime"></p>
         {% if user.is_authenticated %}
