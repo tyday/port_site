@@ -121,7 +121,6 @@ h1 {
 .parallax {
   /* The image used */
   background-image: url("/static/images/AdobeStock_94764141.jpeg");
-  /* background-image: url("/static/images/AdobeStock_103020747.jpeg"); */
   /* Set a specific height */
   min-height: 500px;
 
