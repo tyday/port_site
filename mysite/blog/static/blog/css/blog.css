@@ -315,6 +315,9 @@ h1 {
 .contactform h2 {
   font-weight: 200;
 }
+#id_contact{
+  display: none;
+}
 .form-actions {
   display: flex;
   justify-content: space-around;

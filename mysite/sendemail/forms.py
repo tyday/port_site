@@ -16,4 +16,8 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder':'Message'}),
         required=False)
+    contact = forms.CharField(widget=forms.Textarea(
+        attrs={'class' : 'contact', 'placeholder':'Message'}),
+        required=False)
+
     

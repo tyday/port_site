@@ -29,14 +29,14 @@ DEBUG = secret_settings.DEBUG
 if DEBUG:
     ALLOWED_HOSTS = ['*', 'tylerday.net', '127.0.0.1', '192.168.1.5','localhost',]
 
+else:
+    ALLOWED_HOSTS = ['tylerday.net', '142.93.201.4', 'www.tylerday.net',]
     # Security Settings
     CSRF_COOKIE_SECURE = True #to avoid transmitting the CSRF cookie over HTTP accidentally.
     SESSION_COOKIE_SECURE = True #to avoid transmitting the session cookie over HTTP accidentally.
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_SSL_REDIRECT = True
-else:
-    ALLOWED_HOSTS = ['tylerday.net', '142.93.201.4', 'www.tylerday.net',]
 
 # Application definition
 

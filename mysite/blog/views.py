@@ -19,6 +19,7 @@ def index(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
+            honeypot = form.cleaned_data['contact']
             subject = form.cleaned_data['subject']
             from_name = form.cleaned_data['from_name']
             from_email = form.cleaned_data['from_email']
@@ -28,7 +29,10 @@ def index(request):
                         Subject:{subject}
                         {message}"""
             try:
-                send_mail('tylerday.net: contact message', message, 'admin@tylerday.net', ['tyrday@gmail.com'])
+                if honeypot == "":
+                    send_mail('tylerday.net: contact message', message, 'admin@tylerday.net', ['tyrday@gmail.com'])
+                # else:
+                #     messages.add_message(request, messages.SUCCESS, 'Honeypot.')
                 messages.add_message(request, messages.SUCCESS, 'Thank you, your information was submitted.')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
