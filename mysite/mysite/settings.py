@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blog',
     'weather',
+    'garden',
     # 'sendemail.apps.SendemailConfig',
     'sendemail',
 ]

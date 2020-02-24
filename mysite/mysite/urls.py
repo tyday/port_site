@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('email/', include('sendemail.urls')),
     path('weather/', include('weather.urls')),
+    path('garden/', include('garden.urls')),
 ]
