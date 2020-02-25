@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load tz %}
 
 {% block head %}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -29,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Reading time:</td>
-                    <td>{{ current_conditions.environment.timestamp | date:"SHORT_DATE_FORMAT" }} {{ current_conditions.environment.timestamp|time:"h:i:s a" }}</td>
+                    <td>{{ current_conditions.environment.timestamp |timezone:"US/Eastern" | date:"n/j/y g:i:s a" }}</td>
                 </tr>
             </tbody>
         </table>
