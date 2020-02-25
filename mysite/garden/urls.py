@@ -20,6 +20,7 @@ router.register(r'readings', views.SensorReadingViewSet, basename='reading')
 # urlpatterns.append(path('plots/', views.Plots.as_view()))
 
 urlpatterns = [
+    path('', views.Garden.as_view()),
     path('readingslist/', views.SensorReadingList.as_view()),
     path('plots/', views.Plots.as_view()),
     path('api/', include(router.urls))

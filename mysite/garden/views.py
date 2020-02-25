@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView
+import datetime
+from django.views.generic import DetailView, TemplateView
 from rest_framework import generics, viewsets
 
 from rest_framework.views import APIView
@@ -10,12 +11,19 @@ from garden.serializers import SensorReadingSerializer
 
 from django.db.models import Avg, F, RowRange, Window
 
-# class SensorReadingList(generics.ListCreateAPIView):
-#     queryset = SensorReading.objects.all()
-#     serializer_class = SensorReadingSerializer
-class SensorReadingViewSet(viewsets.ModelViewSet):
-    queryset = SensorReading.objects.all().order_by('timestamp')
+class SensorReadingViewSet(viewsets.ModelViewSet):    
     serializer_class = SensorReadingSerializer
+
+    def get_queryset(self):
+        queryset = SensorReading.objects.all().order_by('timestamp')
+        latest = self.request.query_params.get('latest', None)
+        print(self.request.query_params)
+        print(f'latest: {latest}')
+        if latest is not None:
+            most_recent = queryset.last().timestamp
+            print(most_recent)
+            queryset = queryset.exclude(timestamp__lt=most_recent)
+        return queryset
 
 class SensorReadingList(APIView):
     """
@@ -23,17 +31,10 @@ class SensorReadingList(APIView):
     """
     def get(self, request, format=None):
         sensor_readings = SensorReading.objects.all().order_by('timestamp')
-        print(sensor_readings.count())
-        # items = sensor_readings.annotate(
-        #     avg=Window(
-        #         expression=Avg('temp1'), 
-        #         order_by=F('timestamp').asc(), 
-        #         frame=RowRange(start=-2,end=0)
-        #     )
-        
-        # )
+        # print(sensor_readings.count())
+
         items = SensorReading.objects.all().order_by('timestamp')[::2]
-        print(items)
+        # print(items)
         serializer = SensorReadingSerializer(sensor_readings, many=True)
         return Response(serializer.data)
 
@@ -50,3 +51,30 @@ class SensorReadingDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class Plots(TemplateView):
     template_name='garden/plots.html'
+
+class Garden(TemplateView):
+    template_name='garden/garden.html'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Get last sensor reading
+        last_reading = SensorReading.objects.all().last()
+        last_reading_list = {
+            "environment":{
+                "name": "Environment",
+                "light":last_reading.light,
+                "temp":last_reading.temp1,
+                "rh":last_reading.rh1,
+                "timestamp":datetime.datetime.fromtimestamp(last_reading.timestamp)
+            },
+            "greenhouse":{
+                "name": "Greenhouse",
+                "light":last_reading.light,
+                "temp":last_reading.temp2,
+                "rh":last_reading.rh2,
+                "timestamp":datetime.datetime.fromtimestamp(last_reading.timestamp)
+            }
+        }
+        context['current_conditions'] = last_reading_list
+        return context

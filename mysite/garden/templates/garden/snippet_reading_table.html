@@ -1,0 +1,34 @@
+<!-- sensor readings  -->
+{% comment %}
+<div id="reading{{ reading.name }}" class="reading">
+    <h3>{{ reading.name }}</h3>
+    <div class="readingContainer">
+        <div>Temp:</div> 
+        <div class="readingHolder" id="temp{{ reading.name }}">{{ reading.temp }}</div>
+        <div>&#176; F</div>
+    </div>
+    <div class="readingContainer">
+        <div>RH:</div> 
+        <div class="readingHolder" id="rh{{ reading.rh }}">{{ reading.rh }}</div>
+        <div>% RH</div>
+    </div>
+</div>
+{% endcomment %}
+
+<table class="readingTable" id="table{{ reading.name }}">
+    <thead>
+        <tr>
+            <th colspan="2">{{ reading.name }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Temp:</td>
+            <td>{{ reading.temp }}&#176; F</td>
+        </tr>
+        <tr>
+            <td>RH:</td>
+            <td>{{ reading.rh }}% RH</td>
+        </tr>
+    </tbody>
+</table>

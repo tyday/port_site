@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+  }
+td, th {
+    /* border: 1px solid #999; */
+    padding: 0.5rem;
+    text-align: left;
+    font-size: x-large;
+  }
+
+th{
+    background-color: ;
+}
+.readingTable > thead > tr > th{
+    text-align: center;
+}
+#tableEnvironment{
+    background-color: #fff2ab;
+}
+#tableGreenhouse{
+    background-color: #99da8f;
+}
+.conditions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 50px;
+    justify-content: center;
+}
+/* .reading{
+    padding: 2rem 2rem;
+}
+.readingContainer{
+    display: flex;
+    flex-direction: row;
+    font-size: x-large;
+    
+}
+.readingHolder{
+    margin: 0 10px;;
+} */
+.readingTable{
+    margin: 10px 10px;    
+    background-color: #9382bb;
+    /* flex: 0 1 300px; */
+}
