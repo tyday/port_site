@@ -64,15 +64,15 @@ class Garden(TemplateView):
             "environment":{
                 "name": "Environment",
                 "light":last_reading.light,
-                "temp":last_reading.temp1,
-                "rh":last_reading.rh1,
+                "temp":round(last_reading.temp1 * 1.8 + 32, 1),
+                "rh":round(last_reading.rh1, 1),
                 "timestamp":datetime.datetime.fromtimestamp(last_reading.timestamp)
             },
             "greenhouse":{
                 "name": "Greenhouse",
                 "light":last_reading.light,
-                "temp":last_reading.temp2,
-                "rh":last_reading.rh2,
+                "temp":round(last_reading.temp2 * 1.8 + 32, 1),
+                "rh":round(last_reading.rh2, 1),
                 "timestamp":datetime.datetime.fromtimestamp(last_reading.timestamp)
             }
         }
