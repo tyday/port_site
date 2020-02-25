@@ -77,8 +77,8 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
     Plotly.newPlot(plot,data, layout, config)
 }
 let getData = () => {
-    // const url = 'http://127.0.0.1:8000/garden/api/readings.json'
-    const url = 'https://tylerday.net/garden/api/readings.json'
+    const url = '/garden/api/readings.json'
+    // const url = 'https://tylerday.net/garden/api/readings.json'
     fetch(url)
     .then(response => response.json())
     .then(function(data){
@@ -92,4 +92,9 @@ let getData = () => {
     })
 }
 
-getData();
+function main(){
+    if(plot){
+        getData();
+    }
+}
+main()

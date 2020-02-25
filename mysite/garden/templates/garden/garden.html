@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<title>Garden Plots</title>
+{% endblock %}
+
+{% block content %}
+<section class="main-content">
+    <h1>Arduino garden</h1>
+    <h2>Current Conditions</h2>
+    <section class="conditions">
+        <div class="environment"></div>
+        <div class="greenhouse"></div>
+    </section>
+    <div id="plot"></div>
+</section>
+{% endblock content %}
+
+{% block footer %}
+<script src="{% static 'garden/js/gardenPlot.js' %}"></script>
+{% endblock footer %}
