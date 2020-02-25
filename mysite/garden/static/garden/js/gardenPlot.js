@@ -113,14 +113,27 @@ let getLatestReading = () => {
     .then((response) => response.json())
     .then((data) => {
         updateTempReadings(data[0])
-        console.log(data)
+        updateChart(data[0])
+        // console.log(data)
     })
     .catch((e)=> console.log(e))
+}
+let updateChart = (data) => {
+    sensorReading = new SensorReading()
+    sensorReading = data
+    console.log(sensorReading)
+    update = {
+        y:[
+            [data.temp1],
+        ],
+        x: [[data.timestamp * 1000]]
+    }
+    Plotly.extendTraces(PLOT, update, [0])
 }
 function main(){
     if(PLOT){
         getData();
-        setInterval(getLatestReading, 30000)
+        setInterval(getLatestReading, 3000)
     }
 }
 
