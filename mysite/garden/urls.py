@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from rest_framework.urlpatterns import format_suffix_patterns
 from garden import views
 
@@ -14,6 +14,13 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'readings', views.SensorReadingViewSet, basename='reading')
-urlpatterns = router.urls
+# urlpatterns = router.urls
 
-urlpatterns.append(path('readingslist/', views.SensorReadingList.as_view()))
+# urlpatterns.append(path('readingslist/', views.SensorReadingList.as_view()))
+# urlpatterns.append(path('plots/', views.Plots.as_view()))
+
+urlpatterns = [
+    path('readingslist/', views.SensorReadingList.as_view()),
+    path('plots/', views.Plots.as_view()),
+    path('api/', include(router.urls))
+]

@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<title>Garden Plots</title>
+{% endblock %}
+
+{% block content %}
+<section class="main-content">
+    <h1>Plot</h1>
+    <div id="plot"></div>
+</section>
+{% endblock content %}
+
+{% block footer %}
+<script src="{% static 'garden/js/gardenPlot.js' %}"></script>
+{% endblock footer %}

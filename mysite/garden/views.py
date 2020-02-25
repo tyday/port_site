@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from rest_framework import generics, viewsets
 
 from rest_framework.views import APIView
@@ -46,3 +47,6 @@ class SensorReadingList(APIView):
 class SensorReadingDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = SensorReading.objects.all()
     serializer_class = SensorReadingSerializer
+
+class Plots(TemplateView):
+    template_name='garden/plots.html'

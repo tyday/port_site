@@ -14,6 +14,9 @@ a:visited {
   text-decoration: none;
   font-family: "Raleway", serif;
 }
+.main-content{
+  margin: 0 10px;
+}
 .page-header {
   background-color: white;
   margin-top: 0;
