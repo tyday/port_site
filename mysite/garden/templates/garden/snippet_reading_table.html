@@ -24,11 +24,11 @@
     <tbody>
         <tr>
             <td>Temp:</td>
-            <td>{{ reading.temp }}&#176; F</td>
+            <td id="temp{{ reading.name }}">{{ reading.temp }}&#176; F</td>
         </tr>
         <tr>
             <td>RH:</td>
-            <td>{{ reading.rh }}% RH</td>
+            <td id="rh{{ reading.name }}">{{ reading.rh }}% RH</td>
         </tr>
     </tbody>
 </table>

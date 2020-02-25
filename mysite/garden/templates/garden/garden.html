@@ -26,11 +26,11 @@
             <tbody>
                 <tr>
                     <td>Ambient light:</td>
-                    <td>{{ current_conditions.environment.light }}</td>
+                    <td id="light">{{ current_conditions.environment.light }}</td>
                 </tr>
                 <tr>
                     <td>Reading time:</td>
-                    <td>{{ current_conditions.environment.timestamp |timezone:"US/Eastern" | date:"n/j/y g:i:s a" }}</td>
+                    <td id="timestamp">{{ current_conditions.environment.timestamp |timezone:"US/Eastern" | date:"n/j/y g:i:s a" }}</td>
                 </tr>
             </tbody>
         </table>

@@ -87,13 +87,40 @@ let getData = () => {
         createPlot(timestamps, temp1, temp2, rh1, rh2, light)
     })
 }
+let updateTempReadings = (reading) => {
+    tempEnvironment = document.getElementById('tempEnvironment')
+    tempGreenhouse = document.getElementById('tempGreenhouse')
+    rhEnvironment = document.getElementById('rhEnvironment')
+    rhGreenhouse = document.getElementById('rhGreenhouse')
+    light = document.getElementById('light')
+    timestamp = document.getElementById('timestamp')
+
+    date = new Date(reading.timestamp * 1000)
+    // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var options = { timezone:"US/Eastern" };
+
+    tempEnvironment.innerText = `${(reading.temp1 * 1.8 + 32).toFixed(1)}\u00B0 F`
+    tempGreenhouse.innerText = `${(reading.temp2 * 1.8 + 32).toFixed(1)}\u00B0 F`
+    rhEnvironment.innerText = `${(reading.rh1).toFixed(1)}% RH`
+    rhGreenhouse.innerText = `${(reading.rh2).toFixed(1)}% RH`
+    light.innerText = reading.light
+    timestamp.innerText = date.toLocaleString("en-US", options).toLowerCase()
+}
 
 let getLatestReading = () => {
-    const url = 1
+    const url = URL+"?latest=true"
+    fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+        updateTempReadings(data[0])
+        console.log(data)
+    })
+    .catch((e)=> console.log(e))
 }
 function main(){
     if(PLOT){
         getData();
+        setInterval(getLatestReading, 30000)
     }
 }
 
