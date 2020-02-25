@@ -1,8 +1,5 @@
-plot = document.getElementById('plot');
-// Plotly.newPlot( TESTER, [{
-// x: [1, 2, 3, 4, 5],
-// y: [1, 2, 4, 8, 16] }], {
-// margin: { t: 0 } } );
+const URL = '/garden/api/readings.json'
+PLOT = document.getElementById('plot');
 
 class SensorReading {
     constructor(id, temp1, temp2, rh1, rh2, light, timestamp){
@@ -54,7 +51,7 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
     var layout = {
         title: 'Garden conditions',
         // autosize: true,
-        width:plot.offsetWidth*.975,
+        width:PLOT.offsetWidth*.975,
         margin: {
             l: 50,
             r: 50,
@@ -74,12 +71,11 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
     var config = {
         responsive: true,
     }
-    Plotly.newPlot(plot,data, layout, config)
+    Plotly.newPlot(PLOT,data, layout, config)
 }
 let getData = () => {
-    const url = '/garden/api/readings.json'
     // const url = 'https://tylerday.net/garden/api/readings.json'
-    fetch(url)
+    fetch(URL)
     .then(response => response.json())
     .then(function(data){
         let timestamps = data.map(x => new Date(x.timestamp*1000))
@@ -92,9 +88,13 @@ let getData = () => {
     })
 }
 
+let getLatestReading = () => {
+    const url = 1
+}
 function main(){
-    if(plot){
+    if(PLOT){
         getData();
     }
 }
+
 main()
