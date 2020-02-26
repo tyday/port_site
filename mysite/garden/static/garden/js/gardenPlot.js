@@ -121,7 +121,7 @@ let getLatestReading = () => {
 let updateChart = (data) => {
     sensorReading = new SensorReading()
     sensorReading = data
-    console.log(sensorReading)
+    // console.log(sensorReading)
     update = 
         {
             y:[
