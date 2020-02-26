@@ -4,7 +4,6 @@
 
 {% block head %}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <link rel="stylesheet" href="{% static 'garden/css/garden.css' %}">
 <title>Arduino Garden</title>
 {% endblock %}
@@ -20,9 +19,12 @@
         <div class="environment"></div>
         <div class="greenhouse"></div>
         
-    </div>
-    <div class="conditions">
+    <!-- </div>
+    <div class="conditions"> -->
         <table class="readingTable">
+            <thead>
+                <tr><th colspan="2">Conditions</th></tr>
+            </thead>
             <tbody>
                 <tr>
                     <td>Ambient light:</td>

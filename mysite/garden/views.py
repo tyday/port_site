@@ -17,11 +17,11 @@ class SensorReadingViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = SensorReading.objects.all().order_by('timestamp')
         latest = self.request.query_params.get('latest', None)
-        print(self.request.query_params)
-        print(f'latest: {latest}')
+        # print(self.request.query_params)
+        # print(f'latest: {latest}')
         if latest is not None:
             most_recent = queryset.last().timestamp
-            print(most_recent)
+            # print(most_recent)
             queryset = queryset.exclude(timestamp__lt=most_recent)
         return queryset
 
