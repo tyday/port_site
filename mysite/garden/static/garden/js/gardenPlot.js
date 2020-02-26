@@ -122,18 +122,34 @@ let updateChart = (data) => {
     sensorReading = new SensorReading()
     sensorReading = data
     console.log(sensorReading)
-    update = {
-        y:[
-            [data.temp1],
-        ],
-        x: [[data.timestamp * 1000]]
-    }
-    Plotly.extendTraces(PLOT, update, [0])
+    update = 
+        {
+            y:[
+                [data.temp1 * 1.8 + 32], 
+                [data.temp2 * 1.8 + 32],
+                [data.rh1],
+                [data.rh2],
+                [data.light]
+            ],
+            x:[[data.timestamp * 1000],[data.timestamp * 1000],
+            [data.timestamp * 1000],[data.timestamp * 1000],[data.timestamp * 1000]]
+        }
+    
+//     update = [
+//         {
+//         y:[[data.temp1 * 1.8 + 32]
+//         ],
+//         x: [
+//             [data.timestamp * 1000]
+//         ],
+//     }
+// ]
+    Plotly.extendTraces(PLOT, update, [0,1,2,3,4])
 }
 function main(){
     if(PLOT){
         getData();
-        setInterval(getLatestReading, 3000)
+        setInterval(getLatestReading, 30000)
     }
 }
 
