@@ -52,13 +52,14 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
         title: 'Garden conditions',
         // autosize: true,
         width:PLOT.offsetWidth*.975,
-        margin: {
-            l: 50,
-            r: 50,
-            b: 100,
-            t: 100,
-            pad: 4
-          },
+        automargin:true,
+        // margin: {
+        //     l: 50,
+        //     r: 50,
+        //     b: 100,
+        //     t: 100,
+        //     pad: 4
+        //   },
         // yaxis: {title: 'yaxis title'},
         yaxis2: {
           title: 'Light',
@@ -70,6 +71,7 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
     }
     var config = {
         responsive: true,
+        showLink: true,
     }
     Plotly.newPlot(PLOT,data, layout, config)
 }
