@@ -31,8 +31,10 @@
     <tr><th>Cloud Coverage</th><td>{{ observation.cloud_coverage | default_if_none:"--" }}</td></tr>
     <tr><th>Precipitation Observation</th><td>{{ observation.precipitation_observation | default_if_none:"--" }}</td></tr>
     <tr><th>Phenomena Observation</th><td>{{ observation.phenomena_observation | default_if_none:"--" }}</td></tr>
+    {% if user == observation.observer %}
     <tr><th>Coordinates</th><td>{{ observation.latitude | default_if_none:"--" }}, {{ observation.longitude | default_if_none:"--" }}</td></tr>
     <tr><th>Location</th><td>{{ observation.city | default_if_none:"--" }}, {{ observation.state | default_if_none:"--" }}</td></tr>
+    {% endif %}
     <tr><th>Notes</th><td>{{ observation.notes | default_if_none:"--" }}</td></tr>
     <tr><th>Image</th><td>
         {% if observation.image %}
