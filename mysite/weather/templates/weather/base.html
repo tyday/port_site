@@ -1,50 +1,18 @@
+{% extends 'blog/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- <title>&#123&#123website.passable&#125&#125</title> -->
-        <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
-        <link rel="stylesheet" href="{% static 'weather/css/weather.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Raleway|Work+Sans:200,700" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="{% static 'blog/images/favicon.ico' %}"/>
-        {% block head %}
-        <title>tylerday.net</title>
-        {% endblock %} 
-    </head>
-    <body>
-        <header class="page-header">
-            <!-- <h1><a href="/">&ltPassable Website&gt</a></h1> -->
-            <nav class="nav-top">
-                <div class="nav-title">
-                    <a href="/" class="nav-btn">Tyler Day</a>
-                </div>
-                <div class="nav-menu">
-                    <a href="/" class="nav-btn">Home</a>
-                    <a href="{% url 'post_list' %}" class="nav-btn">Blog</a>
-                    <a href="{% url 'weather' %}" class="nav-btn">Weather</a>
-                    <!-- <a href="{% url 'post_list' %}" class="nav-btn">Observations</a> -->
-                    <a href="{% url 'observation_new' %}" class="nav-btn">New Observation</a>
-                </div>
-            </nav>
-        </header>
 
-        {% block content %}
-        {% endblock %}
-        
-    {% block footer %}
-    <footer>
-        <!-- social networking links -->
-        <div class="social">
-            <a href="https://github.com/tyday"><img src="/static/images/github-brands.svg" alt="click to go to my github repository" class="social-icons"></a>
-            <a href="https://linkedin.com/in/ty-day"><img src="/static/images/linkedin-in-brands.svg" alt="click to see my profile on linkedin" class="social-icons"></a>
-        </div>
-        <p>&#169 2018 by Tyler Day</p>
-    </footer>
-    {% endblock footer %}
-    <script src="{% static 'weather/js/weather.js' %}"></script>
-    <script src="{% static 'weather/js/main.js' %}"></script>
-    </body>
-</html>
+{% block headspace %}
+    <title>Weather</title>
+    <link rel="stylesheet" href="{% static 'weather/css/weather.css' %}">
+{% endblock headspace %} 
+{% block menu_items %}
+{% if user.is_authenticated %}
+<a href="{% url 'observation_new' %}" class="nav-btn">New Observation</a>
+{% endif %}
+{% endblock menu_items %}
+
+{% block footer %}
+{{ block.super }}
+<script src="{% static 'weather/js/weather.js' %}"></script>
+<script src="{% static 'weather/js/main.js' %}"></script>
+{% endblock footer%}

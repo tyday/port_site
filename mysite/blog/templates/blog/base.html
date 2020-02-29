@@ -9,9 +9,9 @@
         <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Raleway|Work+Sans:200,700" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="{% static 'blog/images/favicon.ico' %}"/>
-        {% block head %}
+        {% block headspace %}
         <title>tylerday.net</title>
-        {% endblock %} 
+        {% endblock headspace %} 
     </head>
     <body>
         <header class="page-header">
@@ -22,7 +22,11 @@
                 </div>
                 <div class="nav-menu">
                     <a href="/" class="nav-btn">Home</a>
+                    <a href="{% url 'weather' %}" class="nav-btn">Weather</a>
+                    <a href="{% url 'garden' %}" class="nav-btn">Garden</a>
                     <a href="{% url 'post_list' %}" class="nav-btn">Blog</a>
+                    {% block menu_items %}
+                    {% endblock menu_items %}
                 </div>
             </nav>
         </header>
