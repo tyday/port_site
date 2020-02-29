@@ -22,7 +22,7 @@
 {% endif %}
 <section class="main-content">
 <div id="app"></div>
-<table>
+<table class="wideContent">
     <th colspan="10">Latest Observations</th>
 <tr>
     <th rowspan="2">Date</th>
@@ -79,6 +79,34 @@
     </tr>
 {% endfor %}
 </table>
+<div class="narrowContent">
+<h3>Latest Observations</h3>
+    {% for observation in observations %}
+    
+    <!-- <tr><td> -->
+      <table>
+      <tr>
+        <th colspan="2">Date: 
+          {% if observation.image %}<b>{% endif %}
+          <a href="{% url 'observation_detail' pk=observation.pk %}">
+          {{ observation.observation_date | date:"m/d/y" }} - 
+          {{ observation.observation_date | date:"H:i" }}</a>
+          {% if observation.image %}</b>{% endif %}</th>
+      </tr>
+    <tr><th>Temp: </th><td>{{ observation.observed_outdoor_temperature | default_if_none:"--" }}F</td></tr>
+    <tr><th>Humd: </th><td>{{ observation.observed_outdoor_humidity | default_if_none:"--" }}%</td></tr>
+    <tr><th>Press: </th><td>{{ observation.observed_pressure_millibars | default_if_none:"--" }}</td></tr>
+    <tr>
+      <th>Wind: </th>
+      <td>
+        {{ observation.surface_wind_direction | default_if_none:"--" }}&#176;@
+        {{ observation.surface_wind_speed | default_if_none:"--" }}
+      </td>
+    </tr>
+    <tr><th>Clouds: </th><td>{{ observation.cloud_coverage.cloud_coverage_short | default_if_none:"--" }}</td></tr>
+  </table>
+    {% endfor %}
+  </div>
 {% if observations.has_other_pages %}
   <ul class="pagination">
     {% if observations.has_previous %}
