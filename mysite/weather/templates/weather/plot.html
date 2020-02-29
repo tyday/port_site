@@ -1,10 +1,11 @@
 {% extends 'weather/base.html' %}
 {% load static %}
 
-{% block head %}
+{% block headspace %}
+{{ block.super }}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <title>Weather</title>
-{% endblock %}
+{% endblock headspace %}
 
 {% block content %}
 <h1>Plot</h1>
