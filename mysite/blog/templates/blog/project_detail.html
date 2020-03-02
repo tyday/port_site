@@ -8,6 +8,7 @@
             srcset="{{ project.images.first.source_set }}"
             sizes="250px"
         {% endif %}
+        loading="lazy"
         src="{{ MEDIA_URL }}{{ project.images.first.image_file }}" alt="{{ project.images.first.alt_text }}" class="project-image project-image-detail">
         {% endif %}
         <!-- <div class="project-contents"> -->

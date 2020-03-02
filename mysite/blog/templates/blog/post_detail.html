@@ -10,6 +10,7 @@
             {% endif %}
             src="{{ MEDIA_URL }}{{ post.photo.image_file }}" 
             sizes="55vw"
+            loading="lazy"
             alt="{{ post.photo_alt_text }}" class="post-image-detail">
         {% endif %}
         <div class="post-contents">

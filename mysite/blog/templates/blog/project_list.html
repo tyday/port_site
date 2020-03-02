@@ -3,7 +3,7 @@
     {% for project in projects %}
         <div class="project-card">
             {% if project.images %}
-            <img class="project-photo-main" src="{{ MEDIA_URL }}{{ project.images.first.image_file }}" alt="{{ project.images.first.alt_text }}" class="project-image">
+            <img class="project-photo-main" loading="lazy" src="{{ MEDIA_URL }}{{ project.images.first.image_file }}" alt="{{ project.images.first.alt_text }}" class="project-image">
             {% endif %}
         </div>
     {% endfor %}

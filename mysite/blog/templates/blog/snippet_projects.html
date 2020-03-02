@@ -10,6 +10,7 @@
             {% endif %}
         src="{{ MEDIA_URL }}{{ project.images.first.image_file }}"
         alt="{{ project.images.first.alt_text }}"
+        loading="lazy"
         >
     <div class="project-title"><h3>{{ project.name }}</h3></div>
     <div class="project-description">

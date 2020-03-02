@@ -15,10 +15,10 @@
             sizes="320px"
             {% endif %}
             src="{{ MEDIA_URL }}{{ post.photo.image_file }}" 
-            alt="{{ post.photo.alt_text }}" class="post-image">
+            alt="{{ post.photo.alt_text }}" class="post-image" loading="lazy">
             {% else %}
             <!-- adds generic photo to blog listing -->
-            <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="" class="post-image">
+            <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="" class="post-image" loading="lazy">
             {% endif %}
         <div class="post-contents">
         <div class="date">
