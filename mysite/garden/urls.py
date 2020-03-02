@@ -1,6 +1,8 @@
 from django.urls import include, path
 from rest_framework.urlpatterns import format_suffix_patterns
 from garden import views
+from blog.views import project_detail
+
 
 # urlpatterns = [
 #     path('readings/', views.SensorReadingList.as_view()),
@@ -26,4 +28,5 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('blog', views.PostListView.as_view()),
     path('blog/<int:pk>', views.PostDetailView.as_view()),
+    path('about/', views.AboutView , name='arduino_garden_about' ),
 ]

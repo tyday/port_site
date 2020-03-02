@@ -1,16 +1,22 @@
 import datetime
 from django.views.generic import DetailView, ListView, TemplateView
+from django.shortcuts import get_object_or_404, redirect, render
+from django.http import Http404
 from rest_framework import generics, viewsets
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from garden.models import SensorReading
+from garden.models import ProjectConnection, SensorReading
 from garden.serializers import SensorReadingSerializer
-from blog.models import Post
+from blog.models import Post, Project
 
 from django.db.models import Avg, F, RowRange, Window
+
+
+
+
 
 class SensorReadingViewSet(viewsets.ModelViewSet):    
     serializer_class = SensorReadingSerializer
@@ -91,3 +97,23 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'garden/post_detail_view.html'
     context_object_name = 'post'
+
+def AboutView(request):
+    arduino_pk = ProjectConnection.objects.all().first()
+    if arduino_pk:
+        project = get_object_or_404(Project, pk=arduino_pk.project.pk)    
+        posts = project.post.exclude(published_date__isnull=True).order_by('-published_date')
+    else:
+        raise Http404()
+    # print(posts)
+    return render(request, 'blog/project_detail.html', {'project':project, 'posts':posts})
+# class AboutView(DetailView):
+#     arduino_pk = ProjectConnection.objects.all().first()
+#     print(arduino_pk)
+#     template_name = 'blog/project_detail.html'
+
+
+#     project = get_object_or_404(Project, pk=pk)    
+#     posts = project.post.exclude(published_date__isnull=True).order_by('-published_date')
+#     print(posts)
+#     return render(request, 'blog/project_detail.html', {'project':project, 'posts':posts})

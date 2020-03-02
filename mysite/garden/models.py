@@ -1,4 +1,8 @@
 from django.db import models
+from blog.models import Project
+
+class ProjectConnection(models.Model):
+    project = models.OneToOneField(Project, on_delete=models.CASCADE)
 
 # Create your models here.
 class SensorReading(models.Model):
