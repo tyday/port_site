@@ -1,17 +1,11 @@
-{% extends 'blog/base.html' %}
+{% extends 'garden/base.html' %}
 {% load static %}
 {% load tz %}
 
-{% block headspace %}
-{{ block.super }}
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<link rel="stylesheet" href="{% static 'garden/css/garden.css' %}">
-<title>Arduino Garden</title>
-{% endblock headspace %}
 
 {% block content %}
 <section class="main-content">
-    <h1>Arduino garden</h1>
+    <h2>Arduino garden</h2>
     <div class="conditions"><h2>Current Conditions</h2></div>
     
     <div class="conditions">

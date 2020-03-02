@@ -1,16 +1,14 @@
-table {
+table.readingTable {
     border-collapse: collapse;
   }
-td, th {
+.readingTable td, .readingTable th {
     /* border: 1px solid #999; */
     padding: 0.5rem;
     text-align: left;
     font-size: x-large;
   }
 
-th{
-    background-color: ;
-}
+
 .readingTable > thead > tr > th{
     text-align: center;
 }

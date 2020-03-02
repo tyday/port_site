@@ -24,7 +24,7 @@ router.register(r'readings', views.SensorReadingViewSet, basename='reading')
 urlpatterns = [
     path('', views.Garden.as_view(), name='garden'),
     path('readingslist/', views.SensorReadingList.as_view()),
-    path('plots/', views.Plots.as_view()),
+    path('plots/', views.Plots.as_view(), name='arduino_garden_plots'),
     path('api/', include(router.urls)),
     path('blog', views.PostListView.as_view()),
     path('blog/<int:pk>', views.PostDetailView.as_view()),

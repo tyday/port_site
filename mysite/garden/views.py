@@ -106,7 +106,7 @@ def AboutView(request):
     else:
         raise Http404()
     # print(posts)
-    return render(request, 'blog/project_detail.html', {'project':project, 'posts':posts})
+    return render(request, 'garden/project_detail.html', {'project':project, 'posts':posts})
 # class AboutView(DetailView):
 #     arduino_pk = ProjectConnection.objects.all().first()
 #     print(arduino_pk)

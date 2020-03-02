@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block second-navbar %}
+<div class="nav-menu">
+    <!-- <a href="/" class="nav-btn">Home</a> -->
+    <a href="{% url 'arduino_garden_about' %}" class="nav-btn">About</a>
+    <!-- <a href="{% url 'arduino_garden_plots' %}" class="nav-btn">Plots</a> -->
+    <!-- Plots to be added when I get it together to build some other plots -->
+    {% block menu_items %}
+    {% endblock menu_items %}
+</div>
+{% endblock second-navbar %}}
+
+{% block headspace %}
+{{ block.super }}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<link rel="stylesheet" href="{% static 'garden/css/garden.css' %}">
+<title>Arduino Garden</title>
+{% endblock headspace %}
