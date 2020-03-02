@@ -14,6 +14,9 @@ a:visited {
   text-decoration: none;
   font-family: "Raleway", serif;
 }
+ol, ul{
+  padding-left: 40px;
+}
 .main-content{
   margin: 0 10px;
 }
@@ -74,7 +77,7 @@ h1 {
 }
 .post-contents {
   min-width: 320px;
-  width: 50%;
+  /* width: 50%; */
   color: black;
   flex-grow: 1;
 }
@@ -339,4 +342,44 @@ footer p {
 .social-icons {
   width: 20px;
   padding: 20px;
+}
+
+
+/* Settings for images in markdown files */
+img.md-image {
+  margin: 1rem;
+}
+img.md-image.w100{
+    width: 100px;
+}
+.img.md-image.w400{
+    width: 400px;
+}
+img.md-image.right {
+  float: right;
+  /* width: 500px; */
+  margin: 0 0 1rem 1rem;
+  max-width: 75%;
+}
+img.md-image.left {
+  float: left;
+  /* width: 500px; */
+  margin: 0 1rem 1rem 0;
+  max-width: 75%;
+}
+img.md-image.full-width {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 800px;
+  min-width: 50%;
+  max-width: 80%;
+  clear: both;
+}
+.markdown:after {
+  content: "";
+  display: table;
+  clear: both;
 }

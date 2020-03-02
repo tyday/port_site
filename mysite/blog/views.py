@@ -86,5 +86,7 @@ def project_list(request):
     return render(request, 'blog/project_list.html', {'project': project})
 
 def project_detail(request, pk):
-    project = get_object_or_404(Project, pk=pk)
-    return render(request, 'blog/project_detail.html', {'project':project})
+    project = get_object_or_404(Project, pk=pk)    
+    posts = project.post.exclude(published_date__isnull=True).order_by('-published_date')
+    print(posts)
+    return render(request, 'blog/project_detail.html', {'project':project, 'posts':posts})

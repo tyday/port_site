@@ -2,8 +2,9 @@
 <!-- similar to snippet_blog.html
 but does not limit post to 20 words -->
 {% endcomment %}
+{% load markdown %}
 
-{% for post in posts %}
+{% for post in posts|dictsortreversed:"published_date" %}
 <div class="post">
         <a href="{% url 'post_detail' pk=post.pk %}" class="post-link">
         {% if post.photo %}
@@ -14,14 +15,14 @@ but does not limit post to 20 words -->
         src="{{ MEDIA_URL }}{{ post.photo.image_file }}" alt="{{ post.photo.alt_text }}" class="post-image">
         {% else %}
         <!-- adds generic photo to blog listing -->
-        <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="" class="post-image">
+        <img src="/static/images/AdobeStock_64083180_med.jpeg" alt="typewriter with paper" class="post-image">
         {% endif %}
         <div class="post-contents">
         <div class="date">
             published: {{ post.published_date|date:"n/j/y g:h a" }}
         </div>
         <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <p>{{ post.text|markdown|safe }}</p>
         </div>
         </a>
     </div>

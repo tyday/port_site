@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
-{% block head %}
+{% block headspace %}
 <title>&#123&#123blog.name&#125&#125</title>
 {% endblock %}
 {% block content %}
-    {% include "blog/full_blog.html" with posts=posts %}}
+    {% include "blog/snippet_full_blog.html" with posts=posts %}}
 {% endblock %}

@@ -36,10 +36,9 @@
         {% endif %}
         
     </div>
-
-        {% if project.post.all %}
-            {% include "blog/full_blog.html" with posts=project.post.all %}
-        {% endif %}
+    {% if posts %}
+        {% include "blog/snippet_full_blog.html" with posts=posts %}
+    {% endif %}
 
     <!-- </div> -->
     {% endblock %}

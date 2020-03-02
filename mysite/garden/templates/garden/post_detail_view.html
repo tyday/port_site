@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load markdown %}
+
+{# {% block headspace %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'garden/css/md.css' %}">
+{% endblock headspace %} #}
+
+{% block content %}
+<h1>Post detail view</h1>
+<div class="markdown">
+    {{ post.text | markdown | safe }}
+</div>
+
+{% endblock content %}

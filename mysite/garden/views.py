@@ -1,5 +1,5 @@
 import datetime
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView
 from rest_framework import generics, viewsets
 
 from rest_framework.views import APIView
@@ -8,6 +8,7 @@ from rest_framework import status
 
 from garden.models import SensorReading
 from garden.serializers import SensorReadingSerializer
+from blog.models import Post
 
 from django.db.models import Avg, F, RowRange, Window
 
@@ -78,3 +79,15 @@ class Garden(TemplateView):
         }
         context['current_conditions'] = last_reading_list
         return context
+
+class PostListView(ListView):
+    template_name = 'garden/post_list.html'
+    context_object_name = 'posts'
+    queryset = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')
+    model = Post
+    # print(queryset)
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'garden/post_detail_view.html'
+    context_object_name = 'post'
