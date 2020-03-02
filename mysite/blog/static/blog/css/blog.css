@@ -9,6 +9,12 @@ body {
   /* padding-left: 1em; */
   font-family: "Raleway", serif;
 }
+a {
+  color:#1a76ac;
+}
+a:visited{
+  color: #0d405e;
+}
 a,
 a:visited {
   font-family: "Raleway", serif;
