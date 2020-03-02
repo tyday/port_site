@@ -11,7 +11,6 @@ body {
 }
 a,
 a:visited {
-  text-decoration: none;
   font-family: "Raleway", serif;
 }
 ol, ul{
@@ -46,9 +45,10 @@ h1 {
 .post-link {
   display: flex;
   /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
   flex-wrap: wrap;
+  align-items: center;
   padding: 10px 20px;
 }
 .post-detail {
@@ -59,11 +59,6 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
 }
-
-/* .post a, .post  a:visited {
-    color: #000000;
-    text-decoration: none;
-}  */
 .post-image-detail {
   width: 55vw;
   max-width: 600px;
@@ -74,15 +69,18 @@ h1 {
   width: 320px;
   height: auto;
   object-fit: cover;
+  margin-left: .7rem;
 }
 .post-contents {
   min-width: 320px;
   /* width: 50%; */
   color: black;
   flex-grow: 1;
+  padding: 1rem 0.7rem 1rem 1rem;
 }
 .post-contents > * {
-  margin: 1rem 0.7rem 1rem 1rem;
+  /* margin: 1rem 0.7rem 1rem 1rem; */
+  /* changed for padding in .post-contents 3/2/20 */
 }
 .date {
   color: hsla(205, 11%, 60%, 1);
@@ -343,7 +341,14 @@ footer p {
   width: 20px;
   padding: 20px;
 }
-
+blockquote {
+  font: 14px/22px normal helvetica, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
+} 
 
 /* Settings for images in markdown files */
 img.md-image {

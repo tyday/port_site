@@ -6,7 +6,8 @@ but does not limit post to 20 words -->
 
 {% for post in posts|dictsortreversed:"published_date" %}
 <div class="post">
-        <a href="{% url 'post_detail' pk=post.pk %}" class="post-link">
+    <div class="post-link">
+        <!-- <a href="{% url 'post_detail' pk=post.pk %}" class="post-link"> -->
         {% if post.photo %}
         <img 
         {% if post.photo.source_set %}
@@ -21,9 +22,11 @@ but does not limit post to 20 words -->
         <div class="date">
             published: {{ post.published_date|date:"n/j/y g:h a" }}
         </div>
-        <h2>{{ post.title }}</h2>
+        <a href="{% url 'post_detail' pk=post.pk %}" >
+        <h2>{{ post.title }}</h2></a>
         <p>{{ post.text|markdown|safe }}</p>
         </div>
-        </a>
+    </div>
+        <!-- </a> -->
     </div>
 {% endfor %}
