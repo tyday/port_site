@@ -127,7 +127,7 @@ h1 {
   /* The image used */
   background-image: url("/static/blog/images/AdobeStock_94764141.jpeg");
   /* Set a specific height */
-  min-height: 500px;
+  /* min-height: 500px; */
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -137,11 +137,17 @@ h1 {
 }
 .parallax-two {
   background-image: url("/static/blog/images/AdobeStock_176876124_small.jpeg");
-  min-height: 200px;
+  /* min-height: 200px; */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.parallax-h500{
+  min-height: 500px;
+}
+.parallax-h200{
+  min-height: 200px;
 }
 .hero-text {
   /* padding: 100px; */
@@ -154,6 +160,9 @@ h1 {
 .hero-text p {
   color: white;
   line-height: 1.4em;
+}
+.hero-text--minor{
+  padding: 1rem;
 }
 .separator {
   height: 125px;
