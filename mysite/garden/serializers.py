@@ -2,19 +2,22 @@ from rest_framework import serializers
 from garden.models import SensorReading
 
 class SensorReadingSerializer(serializers.ModelSerializer):
-    def __init__(self, *args, **kwargs):
-        many = kwargs.pop('many', True)
-        super(SensorReadingSerializer, self).__init__(many=many, *args, **kwargs)
 
+    timestamp = serializers.IntegerField(required=False)
     class Meta:
         model = SensorReading
+        
         fields = [
             'id',
+            'sensorID',
             'temp1', 'temp2',
             'rh1', 'rh2',
             'light',
             'timestamp'
         ]
+    def __init__(self, *args, **kwargs):
+        many = kwargs.pop('many', True)
+        super(SensorReadingSerializer, self).__init__(many=many, *args, **kwargs)
 
 # class SensorReadingSerializer(serializers.Serializer):
 #     id = serializers.IntegerField(read_only=True)
