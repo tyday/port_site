@@ -1,4 +1,5 @@
-const URL = '/garden/api/readings.json'
+const URL = '/garden/api/readings.json'  // Retrieves all
+// const URL = '/garden/api/readings.json?hours=72'
 PLOT = document.getElementById('plot');
 
 class SensorReading {
@@ -77,7 +78,8 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
 }
 let getData = () => {
     // const url = 'https://tylerday.net/garden/api/readings.json'
-    fetch(URL)
+    let url = URL+'?hours=72'
+    fetch(url)
     .then(response => response.json())
     .then(function(data){
         let timestamps = data.map(x => new Date(x.timestamp*1000))

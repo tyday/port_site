@@ -23,13 +23,26 @@ class SensorReadingViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = SensorReading.objects.all().order_by('timestamp')
+
+        sensor = self.request.query_params.get('sensor', None)
+        if sensor is not None:
+            queryset = queryset.filter(sensorID=sensor)
         latest = self.request.query_params.get('latest', None)
-        # print(self.request.query_params)
-        # print(f'latest: {latest}')
         if latest is not None:
             most_recent = queryset.last().timestamp
             # print(most_recent)
             queryset = queryset.exclude(timestamp__lt=most_recent)
+        hours = self.request.query_params.get('hours', None)
+        if hours is not None:
+            try:
+                last_reading = queryset.last().timestamp
+                earliest_reading = int(last_reading - (float(hours) * 3600))
+                queryset = queryset.exclude(timestamp__lt=earliest_reading)
+                print(last_reading)
+            except Exception as e:
+                print("[garden.views] we failed in SensorReadingViewSet")
+                print(e)
+                pass
         return queryset
 
 class SensorReadingList(APIView):
