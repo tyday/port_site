@@ -48,6 +48,11 @@ h1 {
 .post {
   margin-bottom: 70px;
 }
+.post:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .post-header {
   display: flex;
   justify-content: flex-start;
@@ -367,13 +372,13 @@ img.md-image.w400{
 img.md-image.right {
   float: right;
   /* width: 500px; */
-  margin: 0 0 1rem 1rem;
+  margin: 1rem 0 1rem 1rem;
   max-width: 75%;
 }
 img.md-image.left {
   float: left;
   /* width: 500px; */
-  margin: 0 1rem 1rem 0;
+  margin: 1rem 1rem 1rem 0;
   max-width: 75%;
 }
 img.md-image.full-width {
