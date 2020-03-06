@@ -36,6 +36,9 @@
 <!-- Blog Section -->
 <section>
     <div class="separator"></div>
+    {% comment %}
     {% include "blog/snippet_blog.html" with posts=posts %}
+    {% endcomment %}
+    {% include "blog/snippet_full_blog.html" with posts=posts truncate="true" %}
 </section>
 {% endblock %}

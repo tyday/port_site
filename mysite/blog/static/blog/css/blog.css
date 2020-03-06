@@ -48,22 +48,23 @@ h1 {
 .post {
   margin-bottom: 70px;
 }
-.post-link {
+.post-header {
   display: flex;
-  /* flex-direction: column; */
-  /* justify-content: center; */
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px 20px;
+  padding: 1rem;
 }
-.post-detail {
-  margin-bottom: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+.post-header-titleblock{
+  padding: 1rem;
+}
+.post-body{
+  min-width: 320px;
+  padding: 1rem;
+}
+.post-body > * {
+  margin: 1rem;
+  /* changed for padding in .post-contents 3/2/20 */
 }
 .post-image-detail {
   width: 55vw;
@@ -75,18 +76,6 @@ h1 {
   width: 320px;
   height: auto;
   object-fit: cover;
-  margin-left: .7rem;
-}
-.post-contents {
-  min-width: 320px;
-  /* width: 50%; */
-  color: black;
-  flex-grow: 1;
-  padding: 1rem 0.7rem 1rem 1rem;
-}
-.post-contents > * {
-  /* margin: 1rem 0.7rem 1rem 1rem; */
-  /* changed for padding in .post-contents 3/2/20 */
 }
 .date {
   color: hsla(205, 11%, 60%, 1);
