@@ -372,7 +372,7 @@ img.md-image {
 img.md-image.w100{
     width: 100px;
 }
-.img.md-image.w400{
+img.md-image.w400{
     width: 400px;
 }
 img.md-image.right {
