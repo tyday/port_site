@@ -5,11 +5,16 @@
     <title>Weather</title>
     <link rel="stylesheet" href="{% static 'weather/css/weather.css' %}">
 {% endblock headspace %} 
-{% block menu_items %}
-{% if user.is_authenticated %}
-<a href="{% url 'observation_new' %}" class="nav-btn">New Observation</a>
-{% endif %}
-{% endblock menu_items %}
+
+{% block second-navbar %}
+<div class="nav-menu">
+    {% if user.is_authenticated %}
+        <a href="{% url 'observation_new' %}" class="nav-btn">New Observation</a>
+    {% endif %}
+    {% block menu_items %}
+    {% endblock menu_items %}
+</div>
+{% endblock second-navbar %}}
 
 {% block footer %}
 {{ block.super }}

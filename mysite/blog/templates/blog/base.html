@@ -33,6 +33,13 @@
             {% block second-navbar %}
             {% endblock second-navbar %}
         </header>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><div>{{ message }} <sup onclick='this.parentNode.parentNode.classList.add("fadeout")'>&#10006;</sup></div></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
         {% block content %}
         {% endblock %}

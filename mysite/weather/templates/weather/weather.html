@@ -6,20 +6,6 @@
 {% endblock %}
 
 {% block content %}
-{% if messages %}
-<div class="message--div">
-  <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-          <div>
-              {{ message }} 
-              <sup onclick='this.parentNode.parentNode.classList.add("fadeout")'>&#10006;</sup>
-          </div>
-      </li>
-      {% endfor %}
-  </ul>
-</div>
-{% endif %}
 <div class="parallax">
   <div class="hero-text hero-text--minor">
   </div></div>
