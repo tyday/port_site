@@ -161,6 +161,9 @@ else:
 ADMINS = secret_settings.ADMINS
 SERVER_EMAIL = secret_settings.SERVER_EMAIL
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL ='/'
+
 # Django Rest Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="main-content">
+    <h2>Login</h2>
+    <form id="login" method="post">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>      
+      <button class="button" type="submit">Login</button>
+    </form>
+</section>
+
+{% endblock %}

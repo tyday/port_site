@@ -20,7 +20,7 @@ const Table = ({ data }) =>
               <td>{data.temperature.value ? parseFloat((data.temperature.value *9/5 +32)).toFixed(1) : 'null'}&#0176;F</td>
           </tr>
           <tr>
-              <th>Humidity</th>{ console.log(data)}
+              <th>Humidity</th>
               <td>{data.relativeHumidity.value ? parseFloat(data.relativeHumidity.value).toFixed(0) : 'null'}%</td>
           </tr>
           <tr>
