@@ -17,11 +17,11 @@ const Table = ({ data }) =>
           </tr>
           <tr>
               <th>Temp</th>
-              <td>{data.temperature.value ? (data.temperature.value *9/5 +32).toFixed(1) : 'null'}&#0176;F</td>
+              <td>{data.temperature.value ? parseFloat((data.temperature.value *9/5 +32)).toFixed(1) : 'null'}&#0176;F</td>
           </tr>
           <tr>
-              <th>Humidity</th>
-              <td>{data.relativeHumidity.value ? data.relativeHumidity.value.toFixed(0) : 'null'}%</td>
+              <th>Humidity</th>{ console.log(data)}
+              <td>{data.relativeHumidity.value ? parseFloat(data.relativeHumidity.value).toFixed(0) : 'null'}%</td>
           </tr>
           <tr>
               <th>Pressure</th>
@@ -29,11 +29,11 @@ const Table = ({ data }) =>
           </tr>
           <tr>
               <th>Wind Direction</th>
-              <td>{data.windDirection.value ? data.windDirection.value.toFixed(0) : 'null'}&#0176;</td>
+              <td>{data.windDirection.value ? parseFloat(data.windDirection.value).toFixed(0) : 'null'}&#0176;</td>
           </tr>
           <tr>
               <th>Wind Speed</th>
-              <td>{data.windSpeed.value ? (data.windSpeed.value * 2.237 ).toFixed(0) : "null"} mph</td>
+              <td>{data.windSpeed.value ? parseFloat(data.windSpeed.value * 2.237 ).toFixed(0) : "null"} mph</td>
           </tr>
           <tr>
               <th>Metar</th>
