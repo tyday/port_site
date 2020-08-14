@@ -33,7 +33,7 @@ const Table = ({ data }) =>
           </tr>
           <tr>
               <th>Wind Speed</th>
-              <td>{data.windSpeed.value ? parseFloat(data.windSpeed.value * 2.237 ).toFixed(0) : "null"} mph</td>
+              <td>{data.windSpeed.value ? parseFloat(data.windSpeed.value * 0.621 ).toFixed(0) : "null"} mph</td>
           </tr>
           <tr>
               <th>Metar</th>
