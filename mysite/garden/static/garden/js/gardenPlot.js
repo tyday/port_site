@@ -136,15 +136,6 @@ let updateChart = (data) => {
             [data.timestamp * 1000],[data.timestamp * 1000],[data.timestamp * 1000]]
         }
     
-//     update = [
-//         {
-//         y:[[data.temp1 * 1.8 + 32]
-//         ],
-//         x: [
-//             [data.timestamp * 1000]
-//         ],
-//     }
-// ]
     Plotly.extendTraces(PLOT, update, [0,1,2,3,4])
 }
 function main(){
