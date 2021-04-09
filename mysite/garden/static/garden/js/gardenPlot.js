@@ -1,6 +1,8 @@
 const URL = '/garden/api/readings.json'  // Retrieves all
 // const URL = '/garden/api/readings.json?hours=72'
 PLOT = document.getElementById('plot');
+const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
 
 class SensorReading {
     constructor(id, temp1, temp2, rh1, rh2, light, timestamp){
@@ -54,21 +56,16 @@ let createPlot = (timestamp, temp1, temp2, rh1, rh2, light) => {
         // autosize: true,
         width:PLOT.offsetWidth*.975,
         automargin:true,
-        // margin: {
-        //     l: 50,
-        //     r: 50,
-        //     b: 100,
-        //     t: 100,
-        //     pad: 4
-        //   },
-        // yaxis: {title: 'yaxis title'},
         yaxis2: {
           title: 'Light',
           titlefont: {color: 'rgb(148, 103, 189)'},
           tickfont: {color: 'rgb(148, 103, 189)'},
           overlaying: 'y',
           side: 'right'
-        }
+        },
+        plot_bgcolor: (isDarkMode ? '#0d4a6f' : "#fff"),
+        paper_bgcolor: (isDarkMode ? '#0d4a6f' : "#fff"),
+        font : {color: (isDarkMode ? '#fff' : "#000")}
     }
     var config = {
         responsive: true,

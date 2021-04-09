@@ -1,3 +1,10 @@
+:root {
+  --main-bg-color: white;
+  --main-fg-color: black;
+  --dark-bg-color:  hsl(208, 72%, 20%);
+  --dark-fg-color: hsl(198, 71%, 97%);
+  --dark-input-bg-color:  hsl(208, 60%, 30%);
+}
 * {
   margin: 0;
   padding: 0;
@@ -47,6 +54,8 @@ h1 {
 
 .post {
   margin-bottom: 70px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 .post:after {
   content: "";
@@ -150,10 +159,10 @@ h1 {
   min-height: 200px;
 }
 .hero-text {
-  /* padding: 100px; */
+  padding: 100px;
   padding-top: 100px;
-  padding-left: 1em;
-  padding-right: 1em;
+  /* padding-left: 1em;
+  padding-right: 1em; */
 }
 .hero-text h1,
 .hero-text h2,
@@ -168,6 +177,8 @@ h1 {
   height: 125px;
 }
 .project-section {
+  padding-left: 100px;
+  padding-right: 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -294,7 +305,8 @@ h1 {
 .contact {
   display: flex;
   justify-content: space-between;
-  padding: 30px;
+  padding-right: 100px;
+  padding-left: 100px;
   flex-wrap: wrap;
 }
 .contact h2 {
@@ -426,4 +438,63 @@ img.md-image.full-width {
 }
 .button:hover {
   border-color: rgba(255, 255, 255, 1);
+}
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-bg-color);
+    color: white;
+  }
+  .project-card{
+    background-color: hsl(208, 65%, 22%);
+    color:var(--dark-fg-color);
+    box-shadow: 3px 3px 10px 3px hsla(0, 0%, 0%, 0.144);;
+  }
+  .post-header, .post-body{
+    background-color: hsl(208, 65%, 22%);
+  }
+  a {
+    color:var(--dark-fg-color);
+  }
+  a:visited{
+    color: hsl(240, 71%, 90%);
+  }
+  .btn{
+    color: white;
+  }
+  input {
+    background-color: var(--dark-input-bg-color);
+    color:var(--dark-fg-color);
+  }
+  textarea {
+    background-color: var(--dark-input-bg-color);
+    color:var(--dark-fg-color);
+  }
+  select {
+    background-color: var(--dark-input-bg-color);
+    color:var(--dark-fg-color);
+  }
+  .page-header{
+    background-color: var(--dark-bg-color);
+    color: white;
+  }
+  header a:visited{
+    color:var(--dark-fg-color);
+  }
+  .nav-btn{
+    color: var(--dark-fg-color)
+  }
+  footer p{
+    background-color: var(--dark-bg-color);
+  }
+  table{
+    background-color: var(--dark-bg-color);
+    color: var(--dark-fg-color);
+  }
+  img {
+    opacity: .75;
+    transition: opacity .5s ease-in-out;
+  }
+  img:hover {
+    opacity: 1;
+  }
 }

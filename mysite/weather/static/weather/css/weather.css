@@ -104,3 +104,12 @@ table.narrowContent{
     display: block;
   }
 }
+
+@media screen and (prefers-color-scheme: dark) {
+  .observation-row-one {
+    background-color: hsl(205, 70%, 25%);
+  }
+  .observation-row-two {
+    background-color: hsl(205, 70%, 29%);
+  }
+}

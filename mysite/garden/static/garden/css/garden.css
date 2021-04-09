@@ -43,3 +43,20 @@ table.readingTable {
     background-color: #9382bb;
     /* flex: 0 1 300px; */
 }
+@media screen and (prefers-color-scheme: dark) {
+    #tableEnvironment{
+        background-color: hsl(50, 19%, 31%);
+    }
+    #tableGreenhouse{
+        background-color: hsl(112, 23%, 34%);
+    }
+    .readingTable{
+        background-color: hsl(258, 18%, 33%);
+    }
+    /* .main-svg{
+        background: hsl(258, 18%, 33%);
+    } */
+    .svg-container:first-child{
+        background-color: var(--dark-bg-color);
+    }
+  }
