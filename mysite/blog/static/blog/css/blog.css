@@ -439,6 +439,10 @@ img.md-image.full-width {
     padding-left: 2em;
     padding-right: 2em;
   }
+  .post{
+    padding-left: 2em;
+    padding-right: 2em;
+  }
 }
 @media only screen and (max-width: 500px) {
   .project-detail {
