@@ -290,17 +290,8 @@ h1 {
   opacity: 0;
   max-height: 0;
 }
-@media only screen and (max-width: 500px) {
-  .project-detail {
-    grid-template-rows: 250px 2fr 2fr auto;
-    grid-template-areas:
-      "image image"
-      "title title"
-      "short-description short-description"
-      "github-link github-link"
-      "link link"
-      "long-description long-description";
-  }
+.codehilite span{
+  white-space: normal;
 }
 .contact {
   display: flex;
@@ -438,6 +429,39 @@ img.md-image.full-width {
 }
 .button:hover {
   border-color: rgba(255, 255, 255, 1);
+}
+.section-header{
+  text-align: center;
+  padding-bottom: 50px;;
+}
+@media only screen and (max-width: 700px) {
+  .hero-text {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .project-detail {
+    grid-template-rows: 250px 2fr 2fr auto;
+    grid-template-areas:
+      "image image"
+      "title title"
+      "short-description short-description"
+      "github-link github-link"
+      "link link"
+      "long-description long-description";
+  }
+  .hero-text {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .post{
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  h1 {
+    font-size: 50px;
+  }
 }
 @media screen and (prefers-color-scheme: dark) {
   body {
