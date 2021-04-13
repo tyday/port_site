@@ -1,4 +1,17 @@
-code{white-space: pre-wrap;}
+/* Dark theme picked up here: https://github.com/dracula/pygments */
+
+.codehilite span {
+  display: inline-block;
+   padding: 0.3em 0;
+ }
+ .codehilite {
+  line-height: 1;
+  overflow-x: scroll;
+  width: 100%;
+ }
+code{
+  overflow-x: scroll;
+}
 .codehilite .hll { background-color: #ffffcc }
 .codehilite  { background: #f8f8f8; }
 .codehilite .c { color: #8f5902; font-style: italic } /* Comment */
@@ -78,9 +91,9 @@ code{white-space: pre-wrap;}
 .codehilite .il { color: #0000cf; font-weight: bold } /* Literal.Number.Integer.Long */
 @media screen and (prefers-color-scheme: dark) {
   @media screen and (prefers-color-scheme: dark) {
- .codehilite .hll { background-color: #f1fa8c }
  .codehilite  { background: #282a36; color: #f8f8f2 }
- .codehilite .c { color: #6272a4 } /* Comment */
+ .codehilite .hll { background-color: #f1fa8c }
+ .codehilite .c { color: #8895bb } /* Comment */
  .codehilite .err { color: #f8f8f2 } /* Error */
  .codehilite .g { color: #f8f8f2 } /* Generic */
  .codehilite .k { color: #ff79c6 } /* Keyword */
@@ -89,18 +102,18 @@ code{white-space: pre-wrap;}
  .codehilite .o { color: #ff79c6 } /* Operator */
  .codehilite .x { color: #f8f8f2 } /* Other */
  .codehilite .p { color: #f8f8f2 } /* Punctuation */
- .codehilite .ch { color: #6272a4 } /* Comment.Hashbang */
- .codehilite .cm { color: #6272a4 } /* Comment.Multiline */
+ .codehilite .ch { color: #8895bb } /* Comment.Hashbang */
+ .codehilite .cm { color: #8895bb } /* Comment.Multiline */
  .codehilite .cp { color: #ff79c6 } /* Comment.Preproc */
- .codehilite .cpf { color: #6272a4 } /* Comment.PreprocFile */
- .codehilite .c1 { color: #6272a4 } /* Comment.Single */
- .codehilite .cs { color: #6272a4 } /* Comment.Special */
+ .codehilite .cpf { color: #8895bb } /* Comment.PreprocFile */
+ .codehilite .c1 { color: #8895bb } /* Comment.Single */
+ .codehilite .cs { color: #8895bb } /* Comment.Special */
  .codehilite .gd { color: #8b080b } /* Generic.Deleted */
  .codehilite .ge { color: #f8f8f2; text-decoration: underline } /* Generic.Emph */
  .codehilite .gr { color: #f8f8f2 } /* Generic.Error */
  .codehilite .gh { color: #f8f8f2; font-weight: bold } /* Generic.Heading */
  .codehilite .gi { color: #f8f8f2; font-weight: bold } /* Generic.Inserted */
- .codehilite .go { color: #99975a } /* Generic.Output */
+ .codehilite .go { color: #bdba70 } /* Generic.Output */
  .codehilite .gp { color: #f8f8f2 } /* Generic.Prompt */
  .codehilite .gs { color: #f8f8f2 } /* Generic.Strong */
  .codehilite .gu { color: #f8f8f2; font-weight: bold } /* Generic.Subheading */
