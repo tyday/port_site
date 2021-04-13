@@ -70,8 +70,8 @@ class DataProvider extends Component {
       humidity.value = Math.round(data.relativeHumidity.value)
       temp.value = Math.round(data.temperature.value *9/5+32)
       pressure.value = Math.round(data.barometricPressure.value/100)
-      surface_wind_direction.value =  (data.windDirection.value === null) ? null : (data.windDirection.value * 0.6213712).toFixed(0);
-      surface_wind_speed.value =  (data.windSpeed.value === null) ? null : data.windSpeed.value;
+      surface_wind_direction.value =  (data.windDirection.value === null) ? null : (data.windDirection.value).toFixed(0);
+      surface_wind_speed.value =  (data.windSpeed.value === null) ? null : (data.windSpeed.value * 0.6213712).toFixed(0);
     }
   }
   getAreaForecastDiscussion(office){
