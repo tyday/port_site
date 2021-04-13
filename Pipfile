@@ -18,6 +18,7 @@ plotly = "*"
 djangorestframework = "*"
 markdown = "*"
 pygments = "*"
+scipy = "*"
 
 [requires]
 python_version = "3.7"

@@ -51,8 +51,8 @@ class Observation(models.Model):
     observed_outdoor_humidity = models.IntegerField(blank=True, null=True)
     observed_pressure_millibars = models.IntegerField(blank=True, null=True)
 
-    surface_wind_direction = models.IntegerField()
-    surface_wind_speed = models.IntegerField()
+    surface_wind_direction = models.IntegerField(blank=True, null=True)
+    surface_wind_speed = models.IntegerField(blank=True, null=True)
     aloft_wind_direction = models.IntegerField(blank=True, null=True)
     aloft_wind_speed = models.IntegerField(blank=True, null=True)
 

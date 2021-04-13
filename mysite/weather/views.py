@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.views.generic import ListView
 
@@ -12,6 +12,7 @@ from .forms import ObservationForm
 from .models import Observation
 from .plots.observations import weather_plot, time_of_readings
 from .serializers import ObservationSerializer
+from common.utilities.city_finder import find_city
 
 class ObservationList(ListView):
     model = Observation
@@ -86,3 +87,21 @@ def plot(request):
 class ObservationViewSet(viewsets.ModelViewSet):
     queryset = Observation.objects.all().order_by('-observation_date')
     serializer_class = ObservationSerializer
+
+def find_city_req(request):
+    response = JsonResponse({'status':'no coordinate information found.'})
+    if 'lat' and 'lon' in request.GET:
+        try:
+            lat, lon = request.GET['lat'],request.GET['lon'],
+            lat, lon = float(lat), float(lon)
+            city = find_city(lat,lon)
+            response = JsonResponse({
+                'status': 'Success',
+                'city':city.city_name,
+                'admin_region':city.admin_name,
+                'country': city.country_code
+                })
+        except:
+            response = JsonResponse({'status':'could not convert latitude and longitude to float'})
+        
+    return response

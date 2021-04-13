@@ -15,5 +15,6 @@ urlpatterns = [
     path('observation/<int:pk>/edit/', views.observation_edit, name='observation_edit'),
     path('plot/', views.plot, name='plot'),
     path('api/', include(router.urls)),
+    path('findcity/', views.find_city_req, name='find_city')
 
 ]

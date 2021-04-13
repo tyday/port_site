@@ -16,9 +16,40 @@ class DataProvider extends Component {
   location = {
     latitude:0,
     longitude:0,
-    city:""
+    city:"",
+    state:""
   }
-  
+  autofillLocation = () => {
+    const latitude = document.getElementById('id_latitude')
+    const longitude = document.getElementById('id_longitude')
+
+    // Check if latitude exists
+    if(latitude){ 
+      // We already have coordinate data so add it to the page
+    latitude.value = this.location.latitude.toFixed(2)
+    longitude.value = this.location.longitude.toFixed(2)
+
+    // Contact our server and try to fill in city and state data
+    const locationUrl = `/weather/findcity/?lat=${this.location.latitude}&lon=${this.location.longitude}`
+    const city = document.getElementById('id_city')
+    const state = document.getElementById('id_state')
+    fetch(locationUrl)
+    .then(response => {
+      if (response.status !== 200) {
+        return this.setState({ placeholder: "Something went wrong" });
+      }
+      return response.json();
+    })
+    .then(response=>{
+      if (response.status === 'Success'){
+        this.location.city = response.city
+        this.state = response.admin_region
+        city.value = response.city
+        state.value = response.admin_region
+      }
+    })
+    }
+  }
   autofillObservations(data){
     const humidity = document.getElementById('id_observed_outdoor_humidity')
     const temp = document.getElementById('id_observed_outdoor_temperature')
@@ -27,16 +58,20 @@ class DataProvider extends Component {
     const longitude = document.getElementById('id_longitude')
     const city = document.getElementById('id_city')
     const state = document.getElementById('id_state')
+    const surface_wind_direction = document.getElementById('id_surface_wind_direction')
+    const surface_wind_speed = document.getElementById('id_surface_wind_speed')
     if(humidity){
       latitude.value = this.location.latitude.toFixed(2)
       longitude.value = this.location.longitude.toFixed(2)
       city.value = this.location.city
       state.value = this.location.state
-      // console.log(data)
+      console.log(data)
       // humidity.innerHTML = data.
       humidity.value = Math.round(data.relativeHumidity.value)
       temp.value = Math.round(data.temperature.value *9/5+32)
       pressure.value = Math.round(data.barometricPressure.value/100)
+      surface_wind_direction.value =  (data.windDirection.value === null) ? null : (data.windDirection.value * 0.6213712).toFixed(0);
+      surface_wind_speed.value =  (data.windSpeed.value === null) ? null : data.windSpeed.value;
     }
   }
   getAreaForecastDiscussion(office){
@@ -70,8 +105,9 @@ class DataProvider extends Component {
       navigator.geolocation.getCurrentPosition(position => {
         var { latitude, longitude } = position.coords;
         this.location = { latitude, longitude }
+        this.autofillLocation()
         const weatherUrl = `https://api.weather.gov/points/${latitude.toFixed(4)},${longitude.toFixed(4)}`;
-        // console.log(weatherUrl);
+        console.log(weatherUrl);
         fetch(weatherUrl)
           .then(response => {
             if (response.status !== 200) {
@@ -81,12 +117,8 @@ class DataProvider extends Component {
           })
           .then(response => {
               this.getAreaForecastDiscussion(response.properties.cwa)
-              // console.log('79: ', response)
-              // console.log('82', response.properties.relativeLocation.properties.city)
               this.location['city'] = response.properties.relativeLocation.properties.city
               this.location['state'] = response.properties.relativeLocation.properties.state
-              // console.log(this.location)
-            // console.log(response.properties.observationStations);
             fetch(response.properties.observationStations)
               .then(response => {
                 if (response.status !== 200) {
@@ -94,11 +126,6 @@ class DataProvider extends Component {
                 }
                 return response.json();
               })
-              //     .then(response => {
-              //         console.log(response)
-
-              //     })})
-              // })
               .then(response => {
                 // console.log(response)
                 var pollingStation = response.observationStations[0];
@@ -113,13 +140,8 @@ class DataProvider extends Component {
                     return response.json();
                   })
                   .then(response => {
-                    // console.log(response.properties);
                     this.setState({ data: response.properties, loaded: true });
-                    if (document.getElementById('id_latitude').value === ''){
-                      this.autofillObservations(response.properties)
-                      console.log('autofill observation ran')
-                    }
-                    
+                    this.autofillObservations(response.properties)
                   });
               });
           });
@@ -152,7 +174,5 @@ class DataProvider extends Component {
     } else {
         return <p>{placeholder}</p>
     }
-//     return loaded ? this.props.render(data) : <p>{placeholder}</p>;
-//   }
 }}
 export default DataProvider;
