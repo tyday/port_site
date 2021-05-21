@@ -270,6 +270,7 @@ h1 {
   cursor: pointer;
   padding: 11px 19px 14px 19px;
   background-color: #70fd8c;
+  color: black;
   border-radius: 3px;
   margin: 7px;
 }
@@ -283,6 +284,7 @@ h1 {
   cursor: pointer;
   padding: 11px 19px 14px 19px;
   background-color: #ef9191;
+  color: black;
   border-radius: 3px;
   margin: 7px;
 }
