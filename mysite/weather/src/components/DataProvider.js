@@ -129,7 +129,7 @@ class DataProvider extends Component {
               .then(response => {
                 // console.log(response)
                 var pollingStation = response.observationStations[0];
-                pollingStation = `${pollingStation}/observations/current`;
+                pollingStation = `${pollingStation}/observations/latest`;
                 fetch(pollingStation)
                   .then(response => {
                     if (response.status !== 200) {
